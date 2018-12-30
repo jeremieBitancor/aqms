@@ -1,7 +1,9 @@
 from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Colevel
 from .serializers import ColevelSerializer
-from django.db.models import Avg
+from django.db.models import Avg, Count
 
 from django_filters import rest_framework as filters
 from colevel.models import Colevel
@@ -41,6 +43,19 @@ class ColevelListView(generics.ListCreateAPIView):
     # return queryset
 
     # def get_queryset(self):
-    #     queryset = Colevel.objects.all()
-    #     #queryset = Colevel.objects.all().aggregate(Avg('ppm'))
-    #     return queryset
+
+    # queryset = Colevel.objects.all()
+    # queryset = Colevel.objects.all().aggregate(Avg('ppm'))
+    # return queryset
+
+
+class AvePpm(APIView):
+
+    def get(self, request, format=None):
+        # aveppm = Colevel.objects.aggregate(Avg('ppm'))
+        # queryset = Colevel.objects.all()
+        # serializer = ColevelSerializer(queryset)
+
+        ppm = [Colevel.ppm for Colevel in Colevel.objects.all()]
+        date = [Colevel.date for Colevel in Colevel.objects.all()]
+        return Response(request.data)

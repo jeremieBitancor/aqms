@@ -17,6 +17,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatNativeDateModule } from "@angular/material/";
 
 import { HttpClientModule } from "@angular/common/http";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from "@angular/common/http";
     ToolbarComponent,
     ColevelComponent,
     WindspeedComponent,
-    PowerComponent
+    PowerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
