@@ -4,13 +4,13 @@ from django.db.models import Avg
 from django.db.models.fields import DecimalField, DateField, TimeField, IntegerField
 
 
-class ColevelSerializer(serializers.Serializer):
+class ColevelSerializer(serializers.ModelSerializer):
 
-    ppm = serializers.DecimalField(max_digits=5, decimal_places=2)
-    date = serializers.DateField()
-    time = serializers.TimeField(format='%H:%M')
+    # ppm = serializers.DecimalField(max_digits=5, decimal_places=2)
+    # date = serializers.DateField(default)
+    # time = serializers.TimeField(format='%H:%M')
     #aveppm = serializers.IntegerField()
 
-    # class Meta:
-    # model = Colevel
-    #     fields = ('ppm', "date", "time",)
+    class Meta:
+        model = Colevel
+        fields = ('ppm', "date", "time",)
