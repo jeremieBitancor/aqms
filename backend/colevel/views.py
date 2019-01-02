@@ -19,7 +19,7 @@ class ColevelFilter(filters.FilterSet):
 
     class Meta:
         model = Colevel
-        fields = ['time_max', 'date', 'time_min']
+        fields = ['date', 'time_min', 'time_max']
 
 
 class ColevelListView(generics.ListCreateAPIView):
