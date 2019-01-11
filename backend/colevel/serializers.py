@@ -13,4 +13,14 @@ class ColevelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Colevel
-        fields = ('ppm', "date", "time",)
+        fields = ('ppm', "date", "time")
+
+
+class AveColevelSerializer(serializers.Serializer):
+    ave_ppm = serializers.DecimalField(max_digits=5, decimal_places=2)
+    # date = serializers.DateField()
+    hour = serializers.IntegerField()
+    # week = serializers.IntegerField()
+
+    # class Meta:
+    #     fields = ('ppm__avg', 'date', 'time')

@@ -1,4 +1,4 @@
 export interface Data {
-  ppm: Number;
-  time: String;
+  ave_ppm: Number;
+  hour: String;
 }

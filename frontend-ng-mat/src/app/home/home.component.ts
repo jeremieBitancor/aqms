@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-// import { DataService } from "../data.service";
+import { DataService } from "../data.service";
 import { HttpClient } from "@angular/common/http";
 import { Data } from "./Data";
 import { Chart } from "chart.js";
@@ -9,28 +9,29 @@ import { Chart } from "chart.js";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  // colevel: Object;
-  data: Data[];
-  url = "http://localhost:8000/api/colevel/?date=2018-12-27";
-  ppm = [];
-  time = [];
+  colevel: Object;
+  // data: Data[];
+  url = "http://localhost:8000/api/colevel/average";
+  ave_ppm = [];
+  hour = [];
   chart = [];
   constructor(private httpClient: HttpClient) {}
+  // constructor(private Data: DataService) {}
 
   ngOnInit() {
     // this.getColevel();
-    this.httpClient.get(this.url).subscribe((res: Data[]) => {
-      res.forEach(y => {
-        this.time.push(y.time);
-        this.ppm.push(y.ppm);
+    this.httpClient.get(this.url).subscribe((rs: Data[]) => {
+      rs.forEach(y => {
+        this.hour.push(y.hour);
+        this.ave_ppm.push(y.ave_ppm);
       });
       this.chart = new Chart("canvas", {
-        type: "bar",
+        type: "line",
         data: {
-          labels: this.time,
+          labels: this.hour,
           datasets: [
             {
-              data: this.ppm,
+              data: this.ave_ppm,
               borderColor: "#3cba9f",
               fill: false
             }
@@ -43,7 +44,8 @@ export class HomeComponent implements OnInit {
           scales: {
             xAxes: [
               {
-                display: true
+                distribution: "linear"
+                // display: true
               }
             ],
             yAxes: [

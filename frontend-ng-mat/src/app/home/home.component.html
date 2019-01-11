@@ -1,11 +1,10 @@
 <p>home works!</p>
 
-<!-- <ul *ngIf="colevel">
-    <li *ngFor="let colevel of colevel">
-      <p>{{ colevel.ppm }} {{ colevel.date }} {{ colevel.time }}</p>
-    </li>
-  </ul>
-</div> -->
+<ul *ngIf="colevel">
+  <li *ngFor="let colevel of colevel">
+    <p>{{ colevel.ppm }} {{ colevel.date }} {{ colevel.time }}</p>
+  </li>
+</ul>
 
 <div *ngIf="chart">
   <canvas id="canvas">{{ chart }}</canvas>
