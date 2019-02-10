@@ -26,7 +26,7 @@ SECRET_KEY = '1k7-^o_heps!g3u*^n%$f9b7v9*(tf9i8qa+53i8!0)!37+--r'
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.43.71', 'localhost',
-                 '172.16.101.246', '192.168.43.71']
+                 '172.16.101.246', '192.168.43.71', '128.199.248.62']
 
 
 # Application definition
@@ -132,6 +132,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+STATIC_ROOT = '/home/em1ng/aqms/backend/static'
 
 STATIC_URL = '/static/'
 
