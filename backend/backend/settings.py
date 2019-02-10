@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'colevel',
-    'django_filters'
+    'django_filters',
+    'power'
 ]
 
 MIDDLEWARE = [
