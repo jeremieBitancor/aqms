@@ -5,4 +5,4 @@ from power.models import Power
 class PowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Power
-        fields = ('power', 'ampere', 'voltage')
+        fields = ('watts', 'ampere', 'voltage', 'date', 'time')
