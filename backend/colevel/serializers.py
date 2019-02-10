@@ -18,7 +18,7 @@ class ColevelSerializer(serializers.ModelSerializer):
 
 class AveColevelSerializer(serializers.Serializer):
     ave_ppm = serializers.DecimalField(max_digits=5, decimal_places=2)
-    # date = serializers.DateField()
+    date = serializers.DateField()
     hour = serializers.IntegerField()
     # week = serializers.IntegerField()
 

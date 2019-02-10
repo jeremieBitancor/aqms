@@ -6,11 +6,18 @@ import { AppComponent } from "./app.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { HomeComponent } from './home/home.component';
-import { ChartpageComponent } from './chartpage/chartpage.component';
+import { HomeComponent } from "./home/home.component";
+import { ChartpageComponent } from "./chartpage/chartpage.component";
+import { HourlyChartComponent } from "./hourly-chart/hourly-chart.component";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, ChartpageComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    ChartpageComponent,
+    HourlyChartComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent]
