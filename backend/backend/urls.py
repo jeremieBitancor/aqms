@@ -11,6 +11,7 @@ urlpatterns = [
     re_path('api/', include('colevel.urls')),
     re_path('api/', include('power.urls')),
     re_path('api/', include('windspeed.urls')),
+    re_path('api/', include('aqms.urls'))
 ]
 
 # urlpatterns += patterns('',
