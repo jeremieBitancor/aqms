@@ -41,7 +41,6 @@ class ColevelAveListView(generics.ListAPIView):
         'time')).annotate(ave_ppm=Avg('ppm')).order_by('date')
 
     serializer_class = AveColevelSerializer
-<<<<<<< HEAD
 
 
 class LatestColevelView(APIView):
@@ -49,7 +48,3 @@ class LatestColevelView(APIView):
         queryset = Colevel.objects.latest('date', 'time')
         serializer = LatestColevelSerializer(queryset, many=False)
         return Response(serializer.data)
-=======
-    filter_backends = (filters.DjangoFilterBackend, )
-    filter_class = ColevelFilter
->>>>>>> frontend-development
