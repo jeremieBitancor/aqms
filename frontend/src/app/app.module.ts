@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { HttpModule } from "@angular/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -18,7 +19,7 @@ import { HourlyChartComponent } from "./hourly-chart/hourly-chart.component";
     ChartpageComponent,
     HourlyChartComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpModule],
   providers: [],
   bootstrap: [AppComponent]
 })
