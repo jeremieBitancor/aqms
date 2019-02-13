@@ -9,7 +9,8 @@ from rest_framework import routers
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('api/', include('colevel.urls')),
-    re_path('api/', include('power.urls'))
+    re_path('api/', include('power.urls')),
+    re_path('api/', include('windspeed.urls')),
 ]
 
 # urlpatterns += patterns('',

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'colevel',
     'django_filters',
-    'power'
+    'power',
+    'windspeed'
 ]
 
 MIDDLEWARE = [
@@ -136,12 +137,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 30,
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 30,
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
-    )
+    ),
+    # "DEFAULT_RENDERER_CLASSES": (
+    #     "rest_framework.renderers.JSONRenderer",
+    # )
 }
