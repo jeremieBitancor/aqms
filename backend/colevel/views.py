@@ -13,12 +13,16 @@ from django.db.models.functions import ExtractHour, ExtractWeek
 
 class ColevelFilter(filters.FilterSet):
 
-    time_min = filters.TimeFilter(field_name='time', lookup_expr='gte')
-    time_max = filters.TimeFilter(field_name='time', lookup_expr='lte')
+    # time_min = filters.TimeFilter(field_name='time', lookup_expr='gte')
+    # time_max = filters.TimeFilter(field_name='time', lookup_expr='lte')
+
+    date_min = filters.DateFilter(field_name='date', lookup_expr='gte')
+    date_max = filters.DateFilter(field_name='date', lookup_expr='lte')
 
     class Meta:
         model = Colevel
-        fields = ['date', 'time_min', 'time_max']
+        # fields = ['date', 'time_min', 'time_max']
+        fields = ['date']
 
 
 class ColevelListView(generics.ListCreateAPIView):
@@ -33,10 +37,11 @@ class ColevelAveListView(generics.ListAPIView):
     # queryset = Colevel.objects.values('date', hour=ExtractHour(
     #     'time'), week=ExtractWeek('date')).annotate(ave_ppm=Avg('ppm')).order_by('date')
 
-    queryset = Colevel.objects.values(hour=ExtractHour(
+    queryset = Colevel.objects.values('date', hour=ExtractHour(
         'time')).annotate(ave_ppm=Avg('ppm')).order_by('date')
 
     serializer_class = AveColevelSerializer
+<<<<<<< HEAD
 
 
 class LatestColevelView(APIView):
@@ -44,3 +49,7 @@ class LatestColevelView(APIView):
         queryset = Colevel.objects.latest('date', 'time')
         serializer = LatestColevelSerializer(queryset, many=False)
         return Response(serializer.data)
+=======
+    filter_backends = (filters.DjangoFilterBackend, )
+    filter_class = ColevelFilter
+>>>>>>> frontend-development

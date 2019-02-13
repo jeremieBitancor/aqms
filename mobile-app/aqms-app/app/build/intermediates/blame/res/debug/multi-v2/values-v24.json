@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/em1ng/Project_aqms/mobile-app/aqms-app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/home/em1ng/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/705c017bb45489baf42c79166b93daf2/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}

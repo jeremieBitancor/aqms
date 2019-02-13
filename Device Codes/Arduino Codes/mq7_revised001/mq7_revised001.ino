@@ -68,10 +68,10 @@ void pwm_adjust()
     }
     avg_v *= 0.01;
     avg_v *= raw2v;
-    //Serial.print("adjusting PWM w=");             md
-    //Serial.print(w);                              md
-    //Serial.print(", V=");                         md
-    //Serial.println(avg_v);                        md
+    Serial.print("adjusting PWM w=");             //md
+    Serial.print(w);                              //md
+    Serial.print(", V=");                         //md
+    Serial.println(avg_v);                        //md
     if(avg_v < 3.6 && previous_v > 3.6) //we found optimal width
     {
       float dnew = 3.6 - avg_v; //now we need to find if current one
@@ -95,9 +95,9 @@ void pwm_adjust()
 
 float alarm_ppm_threshold = 100; //threshold CO concentration for buzzer alarm to be turned on,
 float red_threshold = 40; //threshold when green LED is turned on red turns on
-float reference_resistor_kOhm = 10.0; //fill correct resisor value if you are using not 10k reference
+float reference_resistor_kOhm = 9.66; //fill correct resisor value if you are using not 10k reference
 
-float sensor_reading_clean_air = 845; //fill raw sensor value at the end of measurement phase (before heating starts) in clean air here! That is critical for proper calculation
+float sensor_reading_clean_air = 606; //fill raw sensor value at the end of measurement phase (before heating starts) in clean air here! That is critical for proper calculation
 float sensor_reading_100_ppm_CO = -1; //if you can measure it 
 //using some CO meter or precisely calculated CO sample, then fill it here
 //otherwise leave -1, default values will be used in this case
@@ -222,11 +222,11 @@ void setup() {
 
   pwm_adjust();
 
-  //Serial.print("PWM result: width ");                   md
-  //Serial.print(opt_width);                              md
-  //Serial.print(", voltage ");                           md
-  //Serial.println(opt_voltage);                          md
-  //Serial.println("Data output: raw A0 value, heating on/off (0.1 off 1000.1 on), CO ppm from last measurement cycle");              md
+  Serial.print("PWM result: width ");                   //md
+  Serial.print(opt_width);                              //md
+  Serial.print(", voltage ");                           //md
+  Serial.println(opt_voltage);                          //md
+  Serial.println("Data output: raw A0 value, heating on/off (0.1 off 1000.1 on), CO ppm from last measurement cycle");              //md
   //beep buzzer in the beginning to indicate that it works
   buzz_on();
   delay(100*time_scale);
@@ -304,13 +304,13 @@ void loop()
   float v = analogRead(A0); //reading value
   sens_val *= 0.999; //applying exponential averaging using formula.
   sens_val += 0.001*v; // average = old_average*a + (1-a)*new_reading
-  if(sec10 - last_print > 1500) //print measurement result into serial every 2 minutes and 30 seconds
+  if(sec10 - last_print > 9) //print measurement result into serial every 2 minutes and 30 seconds
   {
     last_print = sec10;
-    //Serial.println(sens_val);                                     //md
-    //Serial.print(" ");                                          md
-    //Serial.print(0.1 + phase*1000);                             md
-    //Serial.print(" ");                                          md
+    Serial.println(sens_val);                                     //md
+    Serial.print(" ");                                          //md
+    Serial.print(0.1 + phase*1000);                             //md
+    Serial.print(" ");                                          //md
     //Serial.println(last_CO_ppm_measurement);                    md
     //Serial.println("New Data:");
     

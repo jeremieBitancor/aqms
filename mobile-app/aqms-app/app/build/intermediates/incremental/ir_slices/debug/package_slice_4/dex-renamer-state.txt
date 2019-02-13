@@ -1,0 +1,4 @@
+#Tue Feb 12 06:32:08 PHT 2019
+base.0=/home/em1ng/Project_aqms/mobile-app/aqms-app/app/build/intermediates/transforms/dexMerger/debug/4
+path.0=classes.dex
+renamed.0=classes.dex
