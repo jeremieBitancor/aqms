@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Colevel
-from .serializers import ColevelSerializer, AveColevelSerializer
+from .serializers import ColevelSerializer, AveColevelSerializer, LatestColevelSerializer
 from django.db.models import Avg, Count
 
 from django_filters import rest_framework as filters
@@ -37,3 +37,10 @@ class ColevelAveListView(generics.ListAPIView):
         'time')).annotate(ave_ppm=Avg('ppm')).order_by('date')
 
     serializer_class = AveColevelSerializer
+
+
+class LatestColevelView(APIView):
+    def get(self, request, format=None):
+        queryset = Colevel.objects.latest('date', 'time')
+        serializer = LatestColevelSerializer(queryset, many=False)
+        return Response(serializer.data)

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from power.models import Power
-from django.db.models.fields import DecimalField, IntegerField
+from django.db.models.fields import DecimalField, IntegerField, IntegerField
 
 
 class PowerSerializer(serializers.ModelSerializer):
@@ -14,3 +14,9 @@ class AvePowerSerializer(serializers.Serializer):
     ave_ampere = serializers.DecimalField(max_digits=5, decimal_places=3)
     ave_voltage = serializers.DecimalField(max_digits=5, decimal_places=3)
     hour = serializers.IntegerField()
+
+
+class LatestPowerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Power
+        fields = ('watts', 'ampere', 'voltage', 'time', 'date')
