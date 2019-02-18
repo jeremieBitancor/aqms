@@ -40,10 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'colevel',
     'django_filters',
-    'power',
-    'windspeed',
     'aqms'
 ]
 
