@@ -2,20 +2,21 @@
   display: flex;
   flex-direction: row;
   // background-color: aqua;
-  align-content: center;
-  margin-top: 100px;
+  align-content: space-between;
+  margin-top: 50px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .data-label-wrapper {
-  margin: 10px;
+  margin: 20px;
   text-align: center;
   flex-grow: 1;
   // background-color: green;
 }
 
 .data-label {
-  margin-top: 30px;
+  margin: 50px 20px;
   // background-color: aqua;
   font-size: 30px;
   text-transform: uppercase;
@@ -25,6 +26,7 @@
   font-weight: 600;
 }
 .data-unit {
+  margin: 5px;
   font-size: 30px;
   color: rgb(145, 147, 168);
   font-weight: 300;
@@ -37,4 +39,38 @@
   // background-color: azure;
   font-size: 150px;
   line-height: 120px;
+}
+.data-label-wrapper-s {
+  margin: 30px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // background-color: red;
+}
+.data-label-wrapper-s-item {
+  text-align: center;
+}
+
+.data-label-s {
+  margin: 150px 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  word-spacing: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+.data-unit-s {
+  font-size: 15px;
+  text-transform: lowercase;
+  color: rgb(145, 147, 168);
+  font-weight: 300;
+  letter-spacing: normal;
+  text-transform: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.data-s {
+  font-size: 40px;
+  font-weight: 10;
 }

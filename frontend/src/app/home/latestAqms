@@ -1,0 +1,6 @@
+export interface LatestAqms{
+    windspeed: Number;
+    watts: Number;
+    voltage: Number;
+    ampere: Number;
+}

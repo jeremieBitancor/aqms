@@ -1,14 +1,35 @@
 <div class="container">
   <div class="data-label-wrapper">
-    <div class="data-label">co level <span class="data-unit">ppm</span></div>
-    <div class="data">5</div>
+    <span class="data-label">co level</span>
+    <span class="data-unit">ppm</span>
+    <br />
+    <span class="data">{{ colevelData.ppm }}</span>
   </div>
+
   <div class="data-label-wrapper">
-    <div class="data-label">windspeed <span class="data-unit">m/s</span></div>
-    <div class="data">10</div>
+    <span class="data-label">windspeed</span>
+    <span class="data-unit">m/s</span>
+    <br />
+    <span class="data">{{ aqmsData.windspeed }}</span>
   </div>
-  <div class="data-label-wrapper">
-    <div class="data-label">power <span class="data-unit">watts</span></div>
-    <div class="data">15</div>
+
+  <div class="data-label-wrapper-s">
+    <div class="data-label-wrapper-s-item">
+      <span class="data-label">power</span>
+      <span class="data-unit">watts</span>
+      <br />
+      <span class="data">{{ aqmsData.watts }}</span>
+    </div>
+    <div class="data-label-wrapper-s-item">
+      <span class="data-label-s">voltage</span>
+      <span class="data-unit-s">volts</span>
+      <br />
+      <span class="data-s">{{ aqmsData.voltage }}</span>
+      <br />
+      <span class="data-label-s">current</span>
+      <span class="data-unit-s">ampere</span>
+      <br />
+      <span class="data-s">{{ aqmsData.ampere }}</span>
+    </div>
   </div>
 </div>

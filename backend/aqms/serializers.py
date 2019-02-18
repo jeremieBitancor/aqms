@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from aqms.models import Aqms
+from aqms.models import Aqms, Colevel
 from django.db.models.fields import DecimalField, IntegerField
 
 
@@ -18,7 +18,7 @@ class WindspeedSerializer(serializers.ModelSerializer):
 
 class ColevelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Aqms
+        model = Colevel
         fields = ('ppm', 'date_time')
 
 
