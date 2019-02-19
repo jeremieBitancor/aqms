@@ -3,14 +3,18 @@
     <span class="data-label">co level</span>
     <span class="data-unit">ppm</span>
     <br />
-    <span class="data">{{ colevel.ppm }}</span>
+    <span class="data" *ngIf="(colevel$ | async) as colevel">{{
+      colevel.ppm
+    }}</span>
   </div>
 
   <div class="data-label-wrapper">
     <span class="data-label">windspeed</span>
     <span class="data-unit">m/s</span>
     <br />
-    <span class="data">{{ aqms.windspeed }}</span>
+    <span class="data" *ngIf="(aqms$ | async) as aqms">{{
+      aqms.windspeed
+    }}</span>
   </div>
 
   <div class="data-label-wrapper-s">
@@ -18,18 +22,22 @@
       <span class="data-label">power</span>
       <span class="data-unit">watts</span>
       <br />
-      <span class="data">{{ aqms.watts }}</span>
+      <span class="data" *ngIf="(aqms$ | async) as aqms">{{ aqms.watts }}</span>
     </div>
     <div class="data-label-wrapper-s-item">
       <span class="data-label-s">voltage</span>
       <span class="data-unit-s">volts</span>
       <br />
-      <span class="data-s">{{ aqms.voltage }}</span>
+      <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
+        aqms.voltage
+      }}</span>
       <br />
       <span class="data-label-s">current</span>
       <span class="data-unit-s">ampere</span>
       <br />
-      <span class="data-s">{{ aqms.ampere }}</span>
+      <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
+        aqms.ampere
+      }}</span>
     </div>
   </div>
 </div>

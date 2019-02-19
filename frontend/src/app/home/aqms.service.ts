@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Observable, Subject } from "rxjs";
 import { IAqms } from "./aqms";
 import { IColevel } from "./aqms";
 
@@ -11,10 +11,19 @@ export class AqmsService {
   private _colevelURL = "http://localhost:8000/api/aqms/latest/colevel";
 
   constructor(private http: HttpClient) {}
-  getAqms(): Observable<IAqms[]> {
-    return this.http.get<IAqms[]>(this._aqmsURL);
+
+  // getAqms(): Observable<IAqms[]> {
+  //   return this.http.get<IAqms[]>(this._aqmsURL);
+  // }
+  // getColevel(): Observable<IColevel[]> {
+  //   return this.http.get<IColevel[]>(this._colevelURL);
+  // }
+
+  getAqms() {
+    return this.http.get(this._aqmsURL);
   }
-  getColevel(): Observable<IColevel[]> {
-    return this.http.get<IColevel[]>(this._colevelURL);
+
+  getColevel() {
+    return this.http.get(this._colevelURL);
   }
 }

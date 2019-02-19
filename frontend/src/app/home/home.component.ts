@@ -1,9 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import "rxjs/add/operator/map";
 import { ConstantPool } from "@angular/compiler";
 
 import { AqmsService } from "./aqms.service";
+import { typeWithParameters } from "@angular/compiler/src/render3/util";
+import { Observable } from "rxjs";
+import "rxjs/add/observable/interval";
+import "rxjs/add/operator/startWith";
+import "rxjs/add/operator/switchMap";
+import { IAqms } from "./aqms";
 
 @Component({
   selector: "app-home",
@@ -11,26 +17,43 @@ import { AqmsService } from "./aqms.service";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  public aqms = [];
-  public colevel = [];
+  // public aqms = [];
+  // public colevel = [];
+
+  @Input() aqms$: Observable<any>;
+  @Input() colevel$: Observable<any>;
 
   constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
+    // this.getAqms();
+    // this.getColevel();
     this.getAqms();
     this.getColevel();
   }
 
+  // getAqms() {
+  //   this._aqmsService.getAqms().subscribe(data => {
+  //     console.log(data);
+  //     this.aqms = data;
+  //   });
+  // }
+  // getColevel() {
+  //   this._aqmsService.getColevel().subscribe(data => {
+  //     console.log(data);
+  //     this.colevel = data;
+  //   });
+  // }
+
   getAqms() {
-    this._aqmsService.getAqms().subscribe(data => {
-      console.log(data);
-      this.aqms = data;
-    });
+    this.aqms$ = Observable.interval(1000)
+      .startWith(0)
+      .switchMap(() => this._aqmsService.getAqms());
   }
+
   getColevel() {
-    this._aqmsService.getColevel().subscribe(data => {
-      console.log(data);
-      this.colevel = data;
-    });
+    this.colevel$ = Observable.interval(1000)
+      .startWith(0)
+      .switchMap(() => this._aqmsService.getColevel());
   }
 }
