@@ -22,8 +22,4 @@ export class AqmsService {
   getAqms() {
     return this.http.get(this._aqmsURL);
   }
-
-  getColevel() {
-    return this.http.get(this._colevelURL);
-  }
 }

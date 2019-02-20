@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   // public colevel = [];
 
   @Input() aqms$: Observable<any>;
-  @Input() colevel$: Observable<any>;
 
   constructor(private _aqmsService: AqmsService) {}
 
@@ -29,7 +28,6 @@ export class HomeComponent implements OnInit {
     // this.getAqms();
     // this.getColevel();
     this.getAqms();
-    this.getColevel();
   }
 
   // getAqms() {
@@ -49,11 +47,5 @@ export class HomeComponent implements OnInit {
     this.aqms$ = Observable.interval(1000)
       .startWith(0)
       .switchMap(() => this._aqmsService.getAqms());
-  }
-
-  getColevel() {
-    this.colevel$ = Observable.interval(1000)
-      .startWith(0)
-      .switchMap(() => this._aqmsService.getColevel());
   }
 }

@@ -4,8 +4,8 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from aqms.models import Aqms, Colevel
-from aqms.serializers import PowerSerializer, WindspeedSerializer, ColevelSerializer, AqmsSerializer
+from aqms.models import Aqms
+from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer
 # Create your views here.
 
 
@@ -24,9 +24,9 @@ class WindspeedListView(generics.ListAPIView):
     serializer_class = WindspeedSerializer
 
 
-class ColevelListCreateView(generics.ListCreateAPIView):
-    queryset = Colevel.objects.all()
-    serializer_class = ColevelSerializer
+# class ColevelListCreateView(generics.ListCreateAPIView):
+#     queryset = Colevel.objects.all()
+#     serializer_class = ColevelSerializer
 
 
 class AqmsLatestView(APIView):
@@ -36,8 +36,8 @@ class AqmsLatestView(APIView):
         return Response(serializer_class.data)
 
 
-class ColevelLatestView(APIView):
-    def get(self, request, format=None):
-        queryset = Colevel.objects.latest('date_time')
-        serializer_class = ColevelSerializer(queryset, many=False)
-        return Response(serializer_class.data)
+# class ColevelLatestView(APIView):
+#     def get(self, request, format=None):
+#         queryset = Colevel.objects.latest('date_time')
+#         serializer_class = ColevelSerializer(queryset, many=False)
+#         return Response(serializer_class.data)
