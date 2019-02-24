@@ -10,9 +10,10 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home.component";
 import { ChartpageComponent } from "./chartpage/chartpage.component";
-import { HourlyChartComponent } from "./hourly-chart/hourly-chart.component";
 
 import { AqmsService } from "./home/aqms.service";
+import { WeatherComponent } from "./weather/weather.component";
+import { WeatherService } from "./weather/weather.service";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AqmsService } from "./home/aqms.service";
     NavbarComponent,
     HomeComponent,
     ChartpageComponent,
-    HourlyChartComponent
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,7 @@ import { AqmsService } from "./home/aqms.service";
     HttpClientModule,
     HttpModule
   ],
-  providers: [AqmsService],
+  providers: [AqmsService, WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,9 +1,10 @@
-.container {
+.cont {
   display: flex;
   flex-direction: row;
-  // background-color: aqua;
+  background-color: #ffffff;
   align-content: space-between;
-  margin-top: 50px;
+  margin-top: 0px;
+  padding-top: 30px;
   flex-wrap: wrap;
   justify-content: center;
 }
