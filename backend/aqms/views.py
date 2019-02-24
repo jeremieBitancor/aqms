@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from aqms.models import Aqms
-from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer
+from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer, ColevelSerializer
 # Create your views here.
 
 
@@ -23,6 +23,10 @@ class WindspeedListView(generics.ListAPIView):
     queryset = Aqms.objects.all()
     serializer_class = WindspeedSerializer
 
+
+class ColevelListView(generics.ListAPIView):
+    queryset = Aqms.objects.all()
+    serializer_class = ColevelSerializer
 
 # class ColevelListCreateView(generics.ListCreateAPIView):
 #     queryset = Colevel.objects.all()

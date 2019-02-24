@@ -16,10 +16,10 @@ class WindspeedSerializer(serializers.ModelSerializer):
         fields = ('date_time', 'windspeed')
 
 
-# class ColevelSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Colevel
-#         fields = ('ppm', 'date_time')
+class ColevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Aqms
+        fields = ('ppm', 'date_time')
 
 
 class AqmsSerializer(serializers.ModelSerializer):
