@@ -3,7 +3,9 @@
     <span class="data-label">co level</span>
     <span class="data-unit">ppm</span>
     <br />
-    <span class="data" *ngIf="(aqms$ | async) as aqms">{{ aqms.ppm }}</span>
+    <span class="data" *ngIf="(aqms$ | async) as aqms">{{
+      aqms.ppm | number: "1.0000-0"
+    }}</span>
   </div>
 
   <div class="data-label-wrapper">

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class AqmsService {
-  private _aqmsURL = "http://128.199.248.62/api/aqms/latest";
+  private _aqmsURL = "http://localhost:8000/api/aqms/latest";
 
   constructor(private http: HttpClient) {}
 

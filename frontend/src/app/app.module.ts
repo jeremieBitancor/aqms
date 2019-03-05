@@ -14,23 +14,41 @@ import { ChartpageComponent } from "./chartpage/chartpage.component";
 import { AqmsService } from "./home/aqms.service";
 import { WeatherComponent } from "./weather/weather.component";
 import { WeatherService } from "./weather/weather.service";
-
+import { ColevelChartComponent } from "./colevel-chart/colevel-chart.component";
+import { DailyChartComponent } from "./daily-chart/daily-chart.component";
+import { WeeklyChartComponent } from "./weekly-chart/weekly-chart.component";
+import { MonthlyChartComponent } from "./monthly-chart/monthly-chart.component";
+import { DailyService } from "./daily-chart/daily.service";
+import { ChartsModule } from "ng2-charts";
+import { WeeklyService } from "./weekly-chart/weekly.service";
+import { MonthlyService } from "./monthly-chart/monthly.service";
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
     ChartpageComponent,
-    WeatherComponent
+    WeatherComponent,
+    ColevelChartComponent,
+    DailyChartComponent,
+    WeeklyChartComponent,
+    MonthlyChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
-  providers: [AqmsService, WeatherService],
+  providers: [
+    AqmsService,
+    WeatherService,
+    DailyService,
+    WeeklyService,
+    MonthlyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
