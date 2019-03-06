@@ -182,7 +182,7 @@ export class MonthlyChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < ave_wat_wt.length; x++) {
-        consumedPower.push("3");
+        consumedPower.push("10.416");
       }
 
       this.powerChart = new Chart("powerCanvas", {

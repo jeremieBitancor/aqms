@@ -234,7 +234,7 @@ export class WeeklyChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < ave_wat_wt.length; x++) {
-        consumedPower.push("3");
+        consumedPower.push("1.488");
       }
 
       this.coChart = new Chart("powerCanvas", {
