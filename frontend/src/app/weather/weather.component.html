@@ -1,18 +1,17 @@
 <div class="cont">
   <div>
-    <img src="http://openweathermap.org/img/w/{{ weather$.icon }}.png" alt="" />
-    <span id="mainTemp">{{ main$.temp | number: "1.00-0" }}&deg;C</span>
+    <img src="http://openweathermap.org/img/w/{{ weatherIcon$ }}.png" alt="" />
+    <span id="mainTemp">{{ mainTemp$ | number: "1.00-0" }}&deg;C</span>
   </div>
   <div class="item">
-    <span id="weatherDescription">{{ weather$.description }}</span>
+    <span id="weatherDescription">{{ weatherDes$ }}</span>
   </div>
   <div class="item">
     <span id="windSpeedDeg"
-      >Wind: {{ wind$.speed }} m/s
-      {{ wind$.deg | number: "1.0000-0" }}&deg;</span
+      >Wind: {{ windSpeed$ }} m/s {{ windDeg$ | number: "1.0000-0" }}&deg;</span
     >
   </div>
   <div class="item">
-    <span id="mainHumidity">Humidity: {{ main$.humidity }}&#x25;</span>
+    <span id="mainHumidity">Humidity: {{ mainHumid$ }}&#x25;</span>
   </div>
 </div>

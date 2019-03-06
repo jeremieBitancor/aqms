@@ -7,9 +7,12 @@ import { WeatherService } from "./weather.service";
   styleUrls: ["./weather.component.scss"]
 })
 export class WeatherComponent implements OnInit {
-  public main$ = [];
-  public wind$ = [];
-  public weather$ = [];
+  public mainTemp$: any;
+  public mainHumid$: any;
+  public windDeg$: any;
+  public windSpeed$: any;
+  public weatherDes$: any;
+  public weatherIcon$: any;
 
   constructor(private _weatherService: WeatherService) {}
 
@@ -19,13 +22,20 @@ export class WeatherComponent implements OnInit {
 
   getWeather() {
     this._weatherService.getWeather().subscribe(data => {
-      this.main$ = data.main;
+      this.mainTemp$ = data.main.temp;
+      this.mainHumid$ = data.main.humidity;
+      console.log(this.mainTemp$);
+      console.log(this.mainHumid$);
     });
     this._weatherService.getWeather().subscribe(data => {
-      this.wind$ = data.wind;
+      this.windDeg$ = data.wind.deg;
+      this.windSpeed$ = data.wind.speed;
+      console.log(this.windDeg$);
+      console.log(this.windSpeed$);
     });
     this._weatherService.getWeather().subscribe(data => {
-      this.weather$ = data.weather[0];
+      this.weatherDes$ = data.weather[0].description;
+      this.weatherIcon$ = data.weather[0].icon;
     });
   }
 }
