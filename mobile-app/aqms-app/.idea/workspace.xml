@@ -8,7 +8,31 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1da2e3b0-5756-4051-85c6-8d485894c976" name="Default Changelist" comment="" />
+    <list default="true" id="1da2e3b0-5756-4051-85c6-8d485894c976" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backend/aqms/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/aqms/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/daily-chart/daily-chart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/daily-chart/daily-chart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/daily-chart/daily-chart.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/daily-chart/daily-chart.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/daily-chart/daily.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/daily-chart/daily.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly-chart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly-chart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly-chart.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly-chart.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly-chart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly-chart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/monthly-chart/monthly.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/weather/weather.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/weather/weather.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/weather/weather.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/weather/weather.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly-chart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly-chart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly-chart.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly-chart.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly-chart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly-chart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/weekly-chart/weekly.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/aqms-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aqms-app.iml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +50,10 @@
     <session id="777803667">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -89,6 +114,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -100,8 +127,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,13 +230,13 @@
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1600" height="866" extended-state="6" />
     <layout>
-      <window_info id="Structure" order="0" side_tool="true" />
+      <window_info id="Structure" order="0" sideWeight="0.5014881" side_tool="true" weight="0.18404119" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Build Variants" order="5" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.18404119" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.4985119" visible="true" weight="0.18404119" />
       <window_info id="Captures" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Logcat" order="0" />
       <window_info anchor="bottom" id="TODO" order="1" />
@@ -220,7 +245,7 @@
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="6" visible="true" weight="0.08819538" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
@@ -235,50 +260,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_cont_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/cont_main.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/ScrollingActivity.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrolling.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_scrolling.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-1230">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_cont_main.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/cont_main.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/ScrollingActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrolling.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_scrolling.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/MainActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
   </component>
 </project>
