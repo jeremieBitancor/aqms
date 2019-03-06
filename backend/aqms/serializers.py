@@ -29,7 +29,8 @@ class AqmsSerializer(serializers.ModelSerializer):
 
 
 class PowerAveSerializer(serializers.ModelSerializer):
-    ave_watts = serializers.FloatField()
+    ave_wat_pz = serializers.FloatField()
+    ave_wat_wt = serializers.FloatField()
     hour = serializers.IntegerField()
     # date = serializers.IntegerField()
     week = serializers.IntegerField()
@@ -37,11 +38,14 @@ class PowerAveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'ave_watts', 'hour', 'week', 'month')
+        fields = ('date_time', 'ave_wat_wt',
+                  'ave_wat_pz', 'hour', 'week', 'month')
 
 
 class PowerHourlySerializer(serializers.ModelSerializer):
-    ave_watts = serializers.FloatField()
+    ave_wat_pz = serializers.FloatField()
+    ave_wat_wt = serializers.FloatField()
+    ave_wat_all = serializers.FloatField()
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -49,28 +53,35 @@ class PowerHourlySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'hour', 'ave_watts', 'day', 'month', 'year')
+        fields = ('date_time', 'hour', 'ave_wat_wt', 'ave_wat_all',
+                  'ave_wat_pz', 'day', 'month', 'year')
 
 
 class PowerDailySerializer(serializers.ModelSerializer):
-    ave_watts = serializers.FloatField()
+    ave_wat_pz = serializers.FloatField()
+    ave_wat_wt = serializers.FloatField()
+    ave_wat_all = serializers.FloatField()
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'ave_watts', 'week', 'weekday')
+        fields = ('date_time', 'ave_wat_wt', 'ave_wat_pz',
+                  'week', 'weekday', 'ave_wat_all')
 
 
 class PowerWeeklySerializer(serializers.ModelSerializer):
-    ave_watts = serializers.FloatField()
+    ave_wat_pz = serializers.FloatField()
+    ave_wat_wt = serializers.FloatField()
+    ave_wat_all = serializers.FloatField()
     month = serializers.IntegerField()
     week = serializers.IntegerField()
     year = serializers.IntegerField()
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'ave_watts', 'week', 'month', 'year')
+        fields = ('date_time', 'ave_wat_wt', 'ave_wat_all',
+                  'ave_wat_pz', 'week', 'month', 'year')
 
 
 class WindHourlySerializer(serializers.ModelSerializer):

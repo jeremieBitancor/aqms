@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 from django.db.models.functions import ExtractHour, ExtractYear, ExtractWeek, ExtractMonth, ExtractWeekDay, ExtractDay
-from django.db.models import Avg
+from django.db.models import Avg, F
 from django.shortcuts import render
 
 from rest_framework import generics
@@ -47,7 +47,7 @@ class ColevelListView(generics.ListAPIView):
 
 class PowerAveListView(generics.ListAPIView):
     queryset = Aqms.nonzero_objects.values(hour=ExtractHour('date_time'), week=ExtractWeek(
-        'date_time'), month=ExtractMonth('date_time')).annotate(ave_watts=Avg('watts'))
+        'date_time'), month=ExtractMonth('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz')))
     serializer_class = PowerAveSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter
@@ -55,7 +55,7 @@ class PowerAveListView(generics.ListAPIView):
 
 class PowerHourlyAveListView(generics.ListAPIView):
     queryset = Aqms.nonzero_objects.values(hour=ExtractHour(
-        'date_time'), day=ExtractDay('date_time'), month=ExtractMonth('date_time'), year=ExtractYear('date_time')).annotate(ave_watts=Avg('watts')).order_by('hour')
+        'date_time'), day=ExtractDay('date_time'), month=ExtractMonth('date_time'), year=ExtractYear('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('hour')
     serializer_class = PowerHourlySerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter
@@ -63,7 +63,7 @@ class PowerHourlyAveListView(generics.ListAPIView):
 
 class PowerDailyAveListView(generics.ListAPIView):
     queryset = Aqms.nonzero_objects.values(
-        week=ExtractWeek('date_time'), weekday=ExtractWeekDay('date_time')).annotate(ave_watts=Avg('watts')).order_by('weekday')
+        week=ExtractWeek('date_time'), weekday=ExtractWeekDay('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('weekday')
     serializer_class = PowerDailySerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter
@@ -71,7 +71,7 @@ class PowerDailyAveListView(generics.ListAPIView):
 
 class PowerWeeklyAveListView(generics.ListAPIView):
     queryset = Aqms.nonzero_objects.values(month=ExtractMonth(
-        'date_time'), week=ExtractWeek('date_time'), year=ExtractYear('date_time')).annotate(ave_watts=Avg('watts')).order_by('week')
+        'date_time'), week=ExtractWeek('date_time'), year=ExtractYear('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('week')
     serializer_class = PowerWeeklySerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter

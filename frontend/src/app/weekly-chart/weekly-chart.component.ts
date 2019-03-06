@@ -207,12 +207,19 @@ export class WeeklyChartComponent implements OnInit {
     this._weeklyService.getPower().subscribe(data => {
       this.power$ = data;
       let weekday = data.map(data => data.weekday);
-      let ave_watts = data.map(data => data.ave_watts);
+      let ave_wat_wt = data.map(data => data.ave_wat_wt);
+      let ave_wat_pz = data.map(data => data.ave_wat_pz);
+      let ave_wat_all = data.map(data => data.ave_wat_all);
+
       let daysOfWeek = new Array();
-      let aveWattsFixed = new Array();
+      let wt_aveWattsFixed = new Array();
+      let pz_aveWattsFixed = new Array();
+      let all_aveWattsFixed = new Array();
 
       for (var x = 0; x < weekday.length; x++) {
-        aveWattsFixed.push(ave_watts[x].toFixed(2));
+        wt_aveWattsFixed.push(ave_wat_wt[x].toFixed(2));
+        pz_aveWattsFixed.push(ave_wat_pz[x].toFixed(2));
+        all_aveWattsFixed.push(ave_wat_all[x].toFixed(2));
         if (weekday[x] == 1) {
           daysOfWeek.push("Sunday");
         } else if (weekday[x] == 2) {
@@ -232,7 +239,7 @@ export class WeeklyChartComponent implements OnInit {
 
       let consumedPower = new Array();
 
-      for (var x = 0; x < ave_watts.length; x++) {
+      for (var x = 0; x < ave_wat_wt.length; x++) {
         consumedPower.push("3");
       }
 
@@ -242,18 +249,32 @@ export class WeeklyChartComponent implements OnInit {
           labels: daysOfWeek,
           datasets: [
             {
-              label: "Power Generated",
-              data: aveWattsFixed,
+              label: "Wind Turbine",
+              data: wt_aveWattsFixed,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: "#00B0FF"
+              backgroundColor: "#E0E0E0"
+            },
+            {
+              label: "Piezo",
+              data: pz_aveWattsFixed,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#FFF176"
+            },
+            {
+              label: "Both",
+              data: all_aveWattsFixed,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#4FC3F7"
             },
             {
               label: "Power Consumed",
               data: consumedPower,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: "#3cba9f"
+              backgroundColor: "#EF5350"
             }
           ]
         },

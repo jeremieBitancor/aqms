@@ -171,11 +171,12 @@ export class DailyChartComponent implements OnInit {
       this.power$ = data;
 
       let hour = data.map(data => data.hour);
-      let ave_watts = data.map(data => data.ave_watts);
-
+      let ave_wat_wt = data.map(data => data.ave_wat_wt);
+      let ave_wat_pz = data.map(data => data.ave_wat_pz);
+      let ave_wat_all = data.map(data => data.ave_wat_all);
       let consumedPower = new Array();
 
-      for (var x = 0; x < ave_watts.length; x++) {
+      for (var x = 0; x < ave_wat_wt.length; x++) {
         consumedPower.push("3");
       }
 
@@ -185,18 +186,32 @@ export class DailyChartComponent implements OnInit {
           labels: hour,
           datasets: [
             {
-              label: "Power Generated",
-              data: ave_watts,
+              label: "Wind Turbine",
+              data: ave_wat_wt,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: "#00B0FF"
+              backgroundColor: "#E0E0E0"
             },
             {
-              label: "Power Consumed",
+              label: "Piezo",
+              data: ave_wat_pz,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#FFF176"
+            },
+            {
+              label: "Both",
+              data: ave_wat_all,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#4FC3F7"
+            },
+            {
+              label: "Consumed",
               data: consumedPower,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: "#3cba9f"
+              backgroundColor: "#EF5350"
             }
           ]
         },
