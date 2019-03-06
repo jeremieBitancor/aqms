@@ -212,14 +212,8 @@ export class WeeklyChartComponent implements OnInit {
       let ave_wat_all = data.map(data => data.ave_wat_all);
 
       let daysOfWeek = new Array();
-      let wt_aveWattsFixed = new Array();
-      let pz_aveWattsFixed = new Array();
-      let all_aveWattsFixed = new Array();
 
       for (var x = 0; x < weekday.length; x++) {
-        wt_aveWattsFixed.push(ave_wat_wt[x].toFixed(2));
-        pz_aveWattsFixed.push(ave_wat_pz[x].toFixed(2));
-        all_aveWattsFixed.push(ave_wat_all[x].toFixed(2));
         if (weekday[x] == 1) {
           daysOfWeek.push("Sunday");
         } else if (weekday[x] == 2) {
@@ -250,27 +244,27 @@ export class WeeklyChartComponent implements OnInit {
           datasets: [
             {
               label: "Wind Turbine",
-              data: wt_aveWattsFixed,
+              data: ave_wat_wt,
               borderColor: "#3cba9f",
               fill: false,
               backgroundColor: "#E0E0E0"
             },
             {
               label: "Piezo",
-              data: pz_aveWattsFixed,
+              data: ave_wat_pz,
               borderColor: "#3cba9f",
               fill: false,
               backgroundColor: "#FFF176"
             },
             {
               label: "Both",
-              data: all_aveWattsFixed,
+              data: ave_wat_all,
               borderColor: "#3cba9f",
               fill: false,
               backgroundColor: "#4FC3F7"
             },
             {
-              label: "Power Consumed",
+              label: "Consumed",
               data: consumedPower,
               borderColor: "#3cba9f",
               fill: false,

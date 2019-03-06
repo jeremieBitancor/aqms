@@ -7,11 +7,11 @@ import * as moment from "moment";
 export class WeeklyService {
   week = moment().week();
   private _coURL =
-    "http://localhost:8000/api/aqms/colevel/daily?week=" + this.week;
+    "http://128.199.248.62/api/aqms/colevel/daily?week=" + this.week;
   private _windURL =
-    "http://localhost:8000/api/aqms/windspeed/daily?week=" + this.week;
+    "http://128.199.248.62/api/aqms/windspeed/daily?week=" + this.week;
   private _powerURL =
-    "http://localhost:8000/api/aqms/power/daily?week=" + this.week;
+    "http://128.199.248.62/api/aqms/power/daily?week=" + this.week;
   constructor(private http: HttpClient) {}
   getColevel(): Observable<any> {
     return this.http.get<any>(this._coURL);

@@ -24,14 +24,10 @@ export class WeatherComponent implements OnInit {
     this._weatherService.getWeather().subscribe(data => {
       this.mainTemp$ = data.main.temp;
       this.mainHumid$ = data.main.humidity;
-      console.log(this.mainTemp$);
-      console.log(this.mainHumid$);
     });
     this._weatherService.getWeather().subscribe(data => {
       this.windDeg$ = data.wind.deg;
       this.windSpeed$ = data.wind.speed;
-      console.log(this.windDeg$);
-      console.log(this.windSpeed$);
     });
     this._weatherService.getWeather().subscribe(data => {
       this.weatherDes$ = data.weather[0].description;

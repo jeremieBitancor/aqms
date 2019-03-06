@@ -10,21 +10,21 @@ export class DailyService {
   year = formatDate(new Date(), "yyyy", "en").replace(/^0+/, "");
 
   private _coURL =
-    "http://localhost:8000/api/aqms/colevel/hourly?year=" +
+    "http://128.199.248.62/api/aqms/colevel/hourly?year=" +
     this.year +
     "&month=" +
     this.month +
     "&day=" +
     this.day;
   private _windURL =
-    "http://localhost:8000/api/aqms/windspeed/hourly?year=" +
+    "http://128.199.248.62/api/aqms/windspeed/hourly?year=" +
     this.year +
     "&month=" +
     this.month +
     "&day=" +
     this.day;
   private _powerURL =
-    "http://localhost:8000/api/aqms/power/hourly?year=" +
+    "http://128.199.248.62/api/aqms/power/hourly?year=" +
     this.year +
     "&month=" +
     this.month +

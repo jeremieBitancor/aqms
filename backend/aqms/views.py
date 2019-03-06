@@ -131,6 +131,8 @@ class AqmsLatestView(APIView):
         serializer_class = AqmsSerializer(queryset, many=False)
         return Response(serializer_class.data)
 
+# class AqmsLatestView(generics.ListAPIView):
+
 
 # class ColevelLatestView(APIView):
 #     def get(self, request, format=None):

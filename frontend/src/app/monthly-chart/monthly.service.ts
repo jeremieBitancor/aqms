@@ -9,17 +9,17 @@ export class MonthlyService {
   year = formatDate(new Date(), "yyyy", "en").replace(/^0+/, "");
 
   private _coURL =
-    "http://localhost:8000/api/aqms/colevel/weekly?year=" +
+    "http://128.199.248.62/api/aqms/colevel/weekly?year=" +
     this.year +
     "&month=" +
     this.month;
   private _windURL =
-    "http://localhost:8000/api/aqms/windspeed/weekly?year=" +
+    "http://128.199.248.62/api/aqms/windspeed/weekly?year=" +
     this.year +
     "&month=" +
     this.month;
   private _powerURL =
-    "http://localhost:8000/api/aqms/power/weekly?year=" +
+    "http://128.199.248.62/api/aqms/power/weekly?year=" +
     this.year +
     "&month=" +
     this.month;

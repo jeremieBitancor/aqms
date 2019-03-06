@@ -2,13 +2,15 @@ div {
   margin: 30px;
   font-weight: bold;
 }
-
-.label {
-}
 span {
   padding: 8px;
   color: #212121;
   font-weight: 500;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 #good {
   background-color: #00e676;
