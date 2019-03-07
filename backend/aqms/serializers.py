@@ -28,9 +28,20 @@ class AqmsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AqmsLatestSerializer(serializers.ModelSerializer):
+    wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    vol_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    amp_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+
+    class Meta:
+        model = Aqms
+        fields = ('date_time', 'ppm', 'windspeed',
+                  'wat_all', 'vol_all', 'amp_all')
+
+
 class PowerAveSerializer(serializers.ModelSerializer):
-    ave_wat_pz = serializers.FloatField()
-    ave_wat_wt = serializers.FloatField()
+    ave_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     # date = serializers.IntegerField()
     week = serializers.IntegerField()
@@ -43,9 +54,9 @@ class PowerAveSerializer(serializers.ModelSerializer):
 
 
 class PowerHourlySerializer(serializers.ModelSerializer):
-    ave_wat_pz = serializers.FloatField()
-    ave_wat_wt = serializers.FloatField()
-    ave_wat_all = serializers.FloatField()
+    ave_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -58,9 +69,9 @@ class PowerHourlySerializer(serializers.ModelSerializer):
 
 
 class PowerDailySerializer(serializers.ModelSerializer):
-    ave_wat_pz = serializers.FloatField()
-    ave_wat_wt = serializers.FloatField()
-    ave_wat_all = serializers.FloatField()
+    ave_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
 
@@ -71,9 +82,9 @@ class PowerDailySerializer(serializers.ModelSerializer):
 
 
 class PowerWeeklySerializer(serializers.ModelSerializer):
-    ave_wat_pz = serializers.FloatField()
-    ave_wat_wt = serializers.FloatField()
-    ave_wat_all = serializers.FloatField()
+    ave_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     month = serializers.IntegerField()
     week = serializers.IntegerField()
     year = serializers.IntegerField()
@@ -85,7 +96,7 @@ class PowerWeeklySerializer(serializers.ModelSerializer):
 
 
 class WindHourlySerializer(serializers.ModelSerializer):
-    ave_wind = serializers.FloatField()
+    ave_wind = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -97,7 +108,7 @@ class WindHourlySerializer(serializers.ModelSerializer):
 
 
 class WindDailySerializer(serializers.ModelSerializer):
-    ave_wind = serializers.FloatField()
+    ave_wind = serializers.DecimalField(max_digits=6, decimal_places=3)
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
 
@@ -107,7 +118,7 @@ class WindDailySerializer(serializers.ModelSerializer):
 
 
 class WindWeeklySerializer(serializers.ModelSerializer):
-    ave_wind = serializers.FloatField()
+    ave_wind = serializers.DecimalField(max_digits=6, decimal_places=3)
     month = serializers.IntegerField()
     week = serializers.IntegerField()
     year = serializers.IntegerField()
@@ -118,7 +129,7 @@ class WindWeeklySerializer(serializers.ModelSerializer):
 
 
 class CoHourlySerializer(serializers.ModelSerializer):
-    ave_co = serializers.FloatField()
+    ave_co = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -130,7 +141,7 @@ class CoHourlySerializer(serializers.ModelSerializer):
 
 
 class CoDailySerializer(serializers.ModelSerializer):
-    ave_co = serializers.FloatField()
+    ave_co = serializers.DecimalField(max_digits=6, decimal_places=3)
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
 
@@ -140,7 +151,7 @@ class CoDailySerializer(serializers.ModelSerializer):
 
 
 class CoWeeklySerializer(serializers.ModelSerializer):
-    ave_co = serializers.FloatField()
+    ave_co = serializers.DecimalField(max_digits=6, decimal_places=3)
     month = serializers.IntegerField()
     week = serializers.IntegerField()
     year = serializers.IntegerField()

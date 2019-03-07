@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from aqms.models import Aqms
-from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer, ColevelSerializer, PowerAveSerializer, PowerHourlySerializer, PowerDailySerializer, PowerWeeklySerializer, WindHourlySerializer, WindDailySerializer, WindWeeklySerializer, CoHourlySerializer, CoDailySerializer, CoWeeklySerializer
+from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer, AqmsLatestSerializer, ColevelSerializer, PowerAveSerializer, PowerHourlySerializer, PowerDailySerializer, PowerWeeklySerializer, WindHourlySerializer, WindDailySerializer, WindWeeklySerializer, CoHourlySerializer, CoDailySerializer, CoWeeklySerializer
 #  Create your views here.
 
 
@@ -132,7 +132,10 @@ class AqmsLatestView(APIView):
         return Response(serializer_class.data)
 
 # class AqmsLatestView(generics.ListAPIView):
+#     queryset = Aqms.objects.values('date_time', 'ppm', 'windspeed', wat_all=(
+#         F('wat_pz')+F('wat_wt')), vol_all=(F('vol_pz')+F('vol_wt')), amp_all=(F('amp_pz')+F('amp_wt'))).order_by('-date_time')
 
+#     serializer_class = AqmsLatestSerializer
 
 # class ColevelLatestView(APIView):
 #     def get(self, request, format=None):
