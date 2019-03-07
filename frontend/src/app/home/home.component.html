@@ -23,7 +23,7 @@
       <span class="data-unit">watts</span>
       <br />
       <span class="data" *ngIf="(aqms$ | async) as aqms">{{
-        aqms.wat_wt + aqms.wat_pz
+        aqms.wat_wt
       }}</span>
     </div>
     <div class="data-label-wrapper-s-item">
@@ -31,14 +31,14 @@
       <span class="data-unit-s">volts</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
-        aqms.vol_wt + aqms.vol_pz
+        aqms.vol_wt
       }}</span>
       <br />
       <span class="data-label-s">current</span>
       <span class="data-unit-s">ampere</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
-        aqms.amp_wt + aqms.amp_pz
+        aqms.amp_wt
       }}</span>
     </div>
   </div>
