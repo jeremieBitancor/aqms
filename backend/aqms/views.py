@@ -77,7 +77,7 @@ class PowerWeeklyAveListView(generics.ListAPIView):
     # queryset = Aqms.nonzero_objects.values(month=ExtractMonth(
     #     'date_time'), week=ExtractWeek('date_time'), year=ExtractYear('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('week')
     queryset = Aqms.objects.values(month=ExtractMonth('date_time'), week=ExtractWeek('date_time'), year=ExtractYear(
-        'date_time')).annotate(t_wat_pz=Sum('wat_pz')).order_by('week')
+        'date_time')).annotate(t_wat_pz=Sum('wat_pz'), t_wat_wt=Sum('wat_wt')).order_by('week')
     serializer_class = PowerWeeklySerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter
