@@ -6,8 +6,8 @@ from django.db.models.fields import FloatField, IntegerField
 class PowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aqms
-        fields = ('watts', 'ampere', 'voltage',
-                  'date_time')
+        fields = ('vol_pz', 'amp_pz', 'wat_pz',
+                  'date_time', 'vol_wt', 'amp_wt', 'wat_wt')
 
 
 class WindspeedSerializer(serializers.ModelSerializer):
@@ -56,7 +56,7 @@ class PowerAveSerializer(serializers.ModelSerializer):
 class PowerHourlySerializer(serializers.ModelSerializer):
     t_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
     t_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
-    t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -64,34 +64,34 @@ class PowerHourlySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'hour', 't_wat_wt', 't_wat_all',
+        fields = ('date_time', 'hour', 't_wat_wt',
                   't_wat_pz', 'day', 'month', 'year')
 
 
 class PowerDailySerializer(serializers.ModelSerializer):
     t_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
     t_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
-    t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
 
     class Meta:
         model = Aqms
         fields = ('date_time', 't_wat_wt', 't_wat_pz',
-                  'week', 'weekday', 't_wat_all')
+                  'week', 'weekday', )
 
 
 class PowerWeeklySerializer(serializers.ModelSerializer):
     t_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
     t_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
-    t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     month = serializers.IntegerField()
     week = serializers.IntegerField()
     year = serializers.IntegerField()
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 't_wat_wt', 't_wat_all',
+        fields = ('date_time', 't_wat_wt',
                   't_wat_pz', 'week', 'month', 'year')
 
 
