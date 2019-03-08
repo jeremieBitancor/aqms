@@ -56,7 +56,7 @@ class PowerAveListView(generics.ListAPIView):
 class PowerHourlyAveListView(generics.ListAPIView):
     # queryset = Aqms.nonzero_objects.values(hour=ExtractHour(
     #     'date_time'), day=ExtractDay('date_time'), month=ExtractMonth('date_time'), year=ExtractYear('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('hour')
-    queryset = Aqms.objects.values(hour=ExtractHour('date_time'), day=ExtractDay('date_time'), month=ExtractMonth('date_time'), year=ExtractYear(
+    queryset = Aqms.nonzero_objects.values(hour=ExtractHour('date_time'), day=ExtractDay('date_time'), month=ExtractMonth('date_time'), year=ExtractYear(
         'date_time')).annotate(t_wat_pz=Sum('wat_pz'), t_wat_wt=Sum('wat_wt')).order_by('hour')
     serializer_class = PowerHourlySerializer
     filter_backends = (filters.DjangoFilterBackend,)
@@ -66,7 +66,7 @@ class PowerHourlyAveListView(generics.ListAPIView):
 class PowerDailyAveListView(generics.ListAPIView):
     # queryset = Aqms.nonzero_objects.values(
     #     week=ExtractWeek('date_time'), weekday=ExtractWeekDay('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('weekday')
-    queryset = Aqms.objects.values(week=ExtractWeek('date_time'), weekday=ExtractWeekDay('date_time')).annotate(
+    queryset = Aqms.nonzero_objects.values(week=ExtractWeek('date_time'), weekday=ExtractWeekDay('date_time')).annotate(
         t_wat_pz=Sum('wat_pz'), t_wat_wt=Sum('wat_wt')).order_by('weekday')
     serializer_class = PowerDailySerializer
     filter_backends = (filters.DjangoFilterBackend,)
@@ -76,7 +76,7 @@ class PowerDailyAveListView(generics.ListAPIView):
 class PowerWeeklyAveListView(generics.ListAPIView):
     # queryset = Aqms.nonzero_objects.values(month=ExtractMonth(
     #     'date_time'), week=ExtractWeek('date_time'), year=ExtractYear('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('week')
-    queryset = Aqms.objects.values(month=ExtractMonth('date_time'), week=ExtractWeek('date_time'), year=ExtractYear(
+    queryset = Aqms.nonzero_objects.values(month=ExtractMonth('date_time'), week=ExtractWeek('date_time'), year=ExtractYear(
         'date_time')).annotate(t_wat_pz=Sum('wat_pz'), t_wat_wt=Sum('wat_wt')).order_by('week')
     serializer_class = PowerWeeklySerializer
     filter_backends = (filters.DjangoFilterBackend,)
