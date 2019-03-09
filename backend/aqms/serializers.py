@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from aqms.models import Aqms
-from django.db.models.fields import FloatField, IntegerField
+from django.db.models.fields import FloatField, IntegerField, DecimalField
 
 
 class PowerSerializer(serializers.ModelSerializer):
@@ -54,8 +54,8 @@ class PowerAveSerializer(serializers.ModelSerializer):
 
 
 class PowerHourlySerializer(serializers.ModelSerializer):
-    t_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
-    t_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    t_wat_pz = serializers.DecimalField(max_digits=8, decimal_places=3)
+    t_wat_wt = serializers.DecimalField(max_digits=8, decimal_places=3)
     # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
@@ -69,8 +69,8 @@ class PowerHourlySerializer(serializers.ModelSerializer):
 
 
 class PowerDailySerializer(serializers.ModelSerializer):
-    t_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
-    t_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    t_wat_pz = serializers.DecimalField(max_digits=8, decimal_places=3)
+    t_wat_wt = serializers.DecimalField(max_digits=8, decimal_places=3)
     # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
@@ -82,8 +82,8 @@ class PowerDailySerializer(serializers.ModelSerializer):
 
 
 class PowerWeeklySerializer(serializers.ModelSerializer):
-    t_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
-    t_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    t_wat_pz = serializers.DecimalField(max_digits=8, decimal_places=3)
+    t_wat_wt = serializers.DecimalField(max_digits=8, decimal_places=3)
     # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     month = serializers.IntegerField()
     week = serializers.IntegerField()
