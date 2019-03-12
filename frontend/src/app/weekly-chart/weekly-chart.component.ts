@@ -32,10 +32,10 @@ export class WeeklyChartComponent implements OnInit {
       let ave_co = data.map(data => data.ave_co);
       let daysOfWeek = new Array();
       let bgColor = new Array();
-      let aveCoFixed = new Array();
+      // let aveCoFixed = new Array();
 
       for (var x = 0; x < weekday.length; x++) {
-        aveCoFixed.push(ave_co[x].toFixed(2));
+        // aveCoFixed.push(ave_co[x].toFixed(2));
 
         if (weekday[x] == 1) {
           daysOfWeek.push("Sunday");
@@ -74,7 +74,7 @@ export class WeeklyChartComponent implements OnInit {
           datasets: [
             {
               label: "Co Level",
-              data: aveCoFixed,
+              data: ave_co,
               borderColor: "#3cba9f",
               fill: false,
               backgroundColor: bgColor
@@ -127,10 +127,10 @@ export class WeeklyChartComponent implements OnInit {
       let weekday = data.map(data => data.weekday);
       let ave_wind = data.map(data => data.ave_wind);
       let daysOfWeek = new Array();
-      let aveWindFixed = new Array();
+      // let aveWindFixed = new Array();
 
       for (var x = 0; x < weekday.length; x++) {
-        aveWindFixed.push(ave_wind[x].toFixed(2));
+        // aveWindFixed.push(ave_wind[x].toFixed(2));
         if (weekday[x] == 1) {
           daysOfWeek.push("Sunday");
         } else if (weekday[x] == 2) {
@@ -155,7 +155,7 @@ export class WeeklyChartComponent implements OnInit {
           datasets: [
             {
               label: "Windspeed",
-              data: aveWindFixed,
+              data: ave_wind,
               borderColor: "#0288D1",
               backgroundColor: "#0288D1",
               fill: false,
@@ -210,7 +210,7 @@ export class WeeklyChartComponent implements OnInit {
       let t_wat_wt = data.map(data => data.t_wat_wt);
       let t_wat_pz = data.map(data => data.t_wat_pz);
       let t_wat_all = data.map(data => data.t_wat_all);
-      console.log(t_wat_all);
+      // console.log(t_wat_all);
 
       let daysOfWeek = new Array();
 

@@ -3,9 +3,7 @@
     <span class="data-label">co level</span>
     <span class="data-unit">ppm</span>
     <br />
-    <span class="data" *ngIf="(aqms$ | async) as aqms">{{
-      aqms.ppm | number: "1.0000-0"
-    }}</span>
+    <span class="data">{{ (aqms$ | async)?.ppm | number: "1.0000-0" }}</span>
   </div>
 
   <div class="data-label-wrapper">
@@ -13,7 +11,7 @@
     <span class="data-unit">m/s</span>
     <br />
     <span class="data" *ngIf="(aqms$ | async) as aqms">{{
-      aqms.windspeed
+      (aqms$ | async)?.windspeed
     }}</span>
   </div>
 
@@ -23,7 +21,7 @@
       <span class="data-unit">watts</span>
       <br />
       <span class="data" *ngIf="(aqms$ | async) as aqms">{{
-        aqms.wat_wt
+        (aqms$ | async)?.wat_all
       }}</span>
     </div>
     <div class="data-label-wrapper-s-item">
@@ -31,14 +29,14 @@
       <span class="data-unit-s">volts</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
-        aqms.vol_wt
+        (aqms$ | async)?.vol_all
       }}</span>
       <br />
       <span class="data-label-s">current</span>
       <span class="data-unit-s">ampere</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
-        aqms.amp_wt
+        (aqms$ | async)?.amp_all
       }}</span>
     </div>
   </div>

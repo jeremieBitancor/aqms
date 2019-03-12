@@ -6,6 +6,8 @@ import { Observable } from "rxjs";
 import "rxjs/add/observable/interval";
 import "rxjs/add/operator/startWith";
 import "rxjs/add/operator/switchMap";
+import { delay, share } from "rxjs/operators";
+import { of } from "rxjs/observable/of";
 
 @Component({
   selector: "app-home",
@@ -29,9 +31,11 @@ export class HomeComponent implements OnInit {
   }
 
   // getAqms() {
-  //   this._aqmsService.getAqms().subscribe(data => {
-  //     this.aqms$ = data;
-  //     console.log(this.aqms$);
-  //   });
+  //   // this._aqmsService.getAqms().subscribe(data => {
+  //   //   this.aqms$ = data;
+  //   //   console.log(this.aqms$[0]);
+  //   // });
+  //   this.aqms$ = this._aqmsService.getAqms().pipe(share());
+  //   // console.log(this.aqms$);
   // }
 }
