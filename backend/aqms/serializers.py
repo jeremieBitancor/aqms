@@ -64,34 +64,34 @@ class PowerHourlySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'hour', 't_wat_wt',
-                  't_wat_pz', 'day', 'month', 'year', 't_wat_all')
+        fields = ('date_time', 'hour', 't_wat_all', 't_wat_wt',
+                  't_wat_pz', 'day', 'month', 'year')
 
 
 class PowerDailySerializer(serializers.ModelSerializer):
     t_wat_pz = serializers.DecimalField(max_digits=8, decimal_places=3)
     t_wat_wt = serializers.DecimalField(max_digits=8, decimal_places=3)
-    # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
     week = serializers.IntegerField()
     weekday = serializers.IntegerField()
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 't_wat_wt', 't_wat_pz',
+        fields = ('date_time', 't_wat_all', 't_wat_wt', 't_wat_pz',
                   'week', 'weekday', )
 
 
 class PowerWeeklySerializer(serializers.ModelSerializer):
     t_wat_pz = serializers.DecimalField(max_digits=8, decimal_places=3)
     t_wat_wt = serializers.DecimalField(max_digits=8, decimal_places=3)
-    # t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    t_wat_all = serializers.DecimalField(max_digits=8, decimal_places=3)
     month = serializers.IntegerField()
     week = serializers.IntegerField()
     year = serializers.IntegerField()
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 't_wat_wt',
+        fields = ('date_time', 't_wat_all', 't_wat_wt',
                   't_wat_pz', 'week', 'month', 'year')
 
 
@@ -129,7 +129,7 @@ class WindWeeklySerializer(serializers.ModelSerializer):
 
 
 class CoHourlySerializer(serializers.ModelSerializer):
-    ave_co = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_co = serializers.DecimalField(max_digits=5, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
