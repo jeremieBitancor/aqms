@@ -9,7 +9,6 @@ from rest_framework.response import Response
 
 from aqms.models import Aqms
 from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer, AqmsLatestSerializer, ColevelSerializer, PowerAveSerializer, PowerHourlySerializer, PowerDailySerializer, PowerWeeklySerializer, WindHourlySerializer, WindDailySerializer, WindWeeklySerializer, CoHourlySerializer, CoDailySerializer, CoWeeklySerializer
-import requests
 #  Create your views here.
 
 
