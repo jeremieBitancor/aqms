@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart } from "chart.js";
-import { MonthlyService } from "./monthly.service";
+import { AqmsService } from "../aqms.service";
 
 @Component({
   selector: "app-monthly-chart",
@@ -15,7 +15,7 @@ export class MonthlyChartComponent implements OnInit {
   windChart: any;
   powerChart: any;
 
-  constructor(private _monthlyService: MonthlyService) {}
+  constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
     this.getCo();
@@ -24,7 +24,7 @@ export class MonthlyChartComponent implements OnInit {
   }
 
   getCo() {
-    this._monthlyService.getColevel().subscribe(data => {
+    this._aqmsService.getColevelMonthly().subscribe(data => {
       this.co$ = data;
       let week = data.map(data => data.week);
       let ave_co = data.map(data => data.ave_co);
@@ -104,7 +104,7 @@ export class MonthlyChartComponent implements OnInit {
     });
   }
   getWind() {
-    this._monthlyService.getWindspeed().subscribe(data => {
+    this._aqmsService.getWindspeedMonthly().subscribe(data => {
       this.wind$ = data;
 
       let week = data.map(data => data.week);
@@ -171,7 +171,7 @@ export class MonthlyChartComponent implements OnInit {
     });
   }
   getPower() {
-    this._monthlyService.getPower().subscribe(data => {
+    this._aqmsService.getPowerMonthly().subscribe(data => {
       this.power$ = data;
 
       let week = data.map(data => data.week);

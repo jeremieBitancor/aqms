@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { WeeklyService } from "./weekly.service";
+import { AqmsService } from "../aqms.service";
 import { Chart } from "chart.js";
 import { WeekDay } from "@angular/common";
 
@@ -17,7 +17,7 @@ export class WeeklyChartComponent implements OnInit {
   windChart: any;
   powerChart: any;
 
-  constructor(private _weeklyService: WeeklyService) {}
+  constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
     this.getCo();
@@ -26,7 +26,7 @@ export class WeeklyChartComponent implements OnInit {
   }
 
   getCo() {
-    this._weeklyService.getColevel().subscribe(data => {
+    this._aqmsService.getColevelWeekly().subscribe(data => {
       this.co$ = data;
       let weekday = data.map(data => data.weekday);
       let ave_co = data.map(data => data.ave_co);
@@ -122,7 +122,7 @@ export class WeeklyChartComponent implements OnInit {
     });
   }
   getWind() {
-    this._weeklyService.getWindspeed().subscribe(data => {
+    this._aqmsService.getWindspeedWeekly().subscribe(data => {
       this.wind$ = data;
       let weekday = data.map(data => data.weekday);
       let ave_wind = data.map(data => data.ave_wind);
@@ -204,7 +204,7 @@ export class WeeklyChartComponent implements OnInit {
     });
   }
   getPower() {
-    this._weeklyService.getPower().subscribe(data => {
+    this._aqmsService.getPowerWeekly().subscribe(data => {
       this.power$ = data;
       let weekday = data.map(data => data.weekday);
       let t_wat_wt = data.map(data => data.t_wat_wt);

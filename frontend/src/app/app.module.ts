@@ -11,17 +11,20 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home.component";
 import { ChartpageComponent } from "./chartpage/chartpage.component";
 
-import { AqmsService } from "./home/aqms.service";
+import { AqmsService } from "./aqms.service";
 import { WeatherComponent } from "./weather/weather.component";
-import { WeatherService } from "./weather/weather.service";
 import { ColevelChartComponent } from "./colevel-chart/colevel-chart.component";
 import { DailyChartComponent } from "./daily-chart/daily-chart.component";
 import { WeeklyChartComponent } from "./weekly-chart/weekly-chart.component";
 import { MonthlyChartComponent } from "./monthly-chart/monthly-chart.component";
-import { DailyService } from "./daily-chart/daily.service";
-import { ChartsModule } from "ng2-charts";
-import { WeeklyService } from "./weekly-chart/weekly.service";
-import { MonthlyService } from "./monthly-chart/monthly.service";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatNativeDateModule } from "@angular/material";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { DateComponent } from "./date/date.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,8 @@ import { MonthlyService } from "./monthly-chart/monthly.service";
     ColevelChartComponent,
     DailyChartComponent,
     WeeklyChartComponent,
-    MonthlyChartComponent
+    MonthlyChartComponent,
+    DateComponent
   ],
   imports: [
     BrowserModule,
@@ -40,15 +44,15 @@ import { MonthlyService } from "./monthly-chart/monthly.service";
     NgbModule,
     HttpClientModule,
     HttpModule,
-    ChartsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [
-    AqmsService,
-    WeatherService,
-    DailyService,
-    WeeklyService,
-    MonthlyService
-  ],
+  providers: [AqmsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

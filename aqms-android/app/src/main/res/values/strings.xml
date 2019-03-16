@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Aqms</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Aqms</string>
+    <!--<string name="nav_header_subtitle">android.studio@android.com</string>-->
+    <string name="nav_header_desc">Navigation header</string>
+    <!--<string name="action_settings">Settings</string>-->
+    <string name='colevel_label'>ppm</string>
+    <string name="colevel_title">CO LEVEL</string>
+    <string name="wind_title">WINDSPEED</string>
+    <string name="wind_label">ms</string>
+    <string name="power_title">POWER</string>
+    <string name="power_label">watts</string>
+    <string name="volts_title">VOLTAGE</string>
+    <string name="volts_label">volts</string>
+    <string name="amps_title">CURRENT</string>
+    <string name="amps_label">ampere</string>
+</resources>

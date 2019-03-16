@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { WeatherService } from "./weather.service";
+import { AqmsService } from "../aqms.service";
 
 @Component({
   selector: "app-weather",
@@ -14,22 +14,22 @@ export class WeatherComponent implements OnInit {
   public weatherDes$: any;
   public weatherIcon$: any;
 
-  constructor(private _weatherService: WeatherService) {}
+  constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
     this.getWeather();
   }
 
   getWeather() {
-    this._weatherService.getWeather().subscribe(data => {
+    this._aqmsService.getWeather().subscribe(data => {
       this.mainTemp$ = data.main.temp;
       this.mainHumid$ = data.main.humidity;
     });
-    this._weatherService.getWeather().subscribe(data => {
+    this._aqmsService.getWeather().subscribe(data => {
       this.windDeg$ = data.wind.deg;
       this.windSpeed$ = data.wind.speed;
     });
-    this._weatherService.getWeather().subscribe(data => {
+    this._aqmsService.getWeather().subscribe(data => {
       this.weatherDes$ = data.weather[0].description;
       this.weatherIcon$ = data.weather[0].icon;
     });

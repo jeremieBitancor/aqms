@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { DailyService } from "./daily.service";
+import { AqmsService } from "../aqms.service";
 import "rxjs/add/observable/interval";
 import "rxjs/add/operator/startWith";
 import "rxjs/add/operator/switchMap";
 import { Chart } from "chart.js";
+import { FormControl, Validators } from "@angular/forms";
+import { MatDatepickerInputEvent } from "@angular/material";
 
 @Component({
   selector: "app-daily-chart",
@@ -19,7 +21,7 @@ export class DailyChartComponent implements OnInit {
   windChart: any;
   powerChart: any;
 
-  constructor(private _dailyService: DailyService) {}
+  constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
     this.getCo();
@@ -28,7 +30,7 @@ export class DailyChartComponent implements OnInit {
   }
 
   getCo() {
-    this._dailyService.getColevel().subscribe(data => {
+    this._aqmsService.getColevelDaily().subscribe(data => {
       this.co$ = data;
       let hour = data.map(data => data.hour);
       let ave_co = data.map(data => data.ave_co);
@@ -105,7 +107,7 @@ export class DailyChartComponent implements OnInit {
     });
   }
   getWind() {
-    this._dailyService.getWindspeed().subscribe(data => {
+    this._aqmsService.getWindspeedDaily().subscribe(data => {
       this.wind$ = data;
 
       let hour = data.map(data => data.hour);
@@ -167,7 +169,7 @@ export class DailyChartComponent implements OnInit {
     });
   }
   getPower() {
-    this._dailyService.getPower().subscribe(data => {
+    this._aqmsService.getPowerDaily().subscribe(data => {
       this.power$ = data;
 
       let hour = data.map(data => data.hour);

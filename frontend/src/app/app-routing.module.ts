@@ -5,6 +5,7 @@ import { ChartpageComponent } from "./chartpage/chartpage.component";
 import { DailyChartComponent } from "./daily-chart/daily-chart.component";
 import { WeeklyChartComponent } from "./weekly-chart/weekly-chart.component";
 import { MonthlyChartComponent } from "./monthly-chart/monthly-chart.component";
+import { ColevelChartComponent } from "./colevel-chart/colevel-chart.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -12,9 +13,9 @@ const routes: Routes = [
     path: "chart",
     component: ChartpageComponent,
     children: [
-      { path: "day", component: DailyChartComponent },
-      { path: "week", component: WeeklyChartComponent },
-      { path: "month", component: MonthlyChartComponent }
+      { path: "colevel", component: ColevelChartComponent },
+      { path: "windspeed", component: WeeklyChartComponent },
+      { path: "power", component: MonthlyChartComponent }
     ]
   }
 ];

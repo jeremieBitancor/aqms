@@ -22,4 +22,5 @@ urlpatterns = [
     path('aqms/colevel/weekly',
          CoWeeklyAveListView.as_view(), name='power-monthly'),
     # path('aqms/latest/colevel', ColevelLatestView.as_view(), name='colevel-latest')
+
 ]

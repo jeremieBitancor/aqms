@@ -1,1 +1,31 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<mat-form-field>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    placeholder="Choose a date"
+    [formControl]="date"
+  />
+  <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date" /> -->
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <!-- <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
+          A valid date mm/dd/yyyy is required
+        </mat-error> -->
+</mat-form-field>
+<div>
+  <div class="label">
+    CO Level
+    <span id="good">Good</span>
+    <span id="moderate">Moderate</span>
+    <span id="usg">Unhealthy for Sensitive Groups</span>
+    <span id="unhealthy">Unhealthy</span>
+    <span id="vunhealthy">Very Unhealthy</span>
+    <span id="hazardous">Hazardous</span>
+  </div>
+  <div>Day</div>
+  <canvas id="coCanvasD"></canvas>
+  <div>Week</div>
+  <canvas id="coCanvasW"></canvas>
+  <div>Month</div>
+  <canvas id="coCanvasM"></canvas>
+</div>

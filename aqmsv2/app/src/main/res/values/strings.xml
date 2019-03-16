@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">aqmsv2</string>
+    <string name="app_name">AQMS</string>
+    <string name='colevel_label'>ppm</string>
+    <string name="colevel_title">CO LEVEL</string>
+    <string name="wind_title">WINDSPEED</string>
+    <string name="wind_label">ms</string>
+    <string name="power_title">POWER</string>
+    <string name="power_label">watts</string>
+    <string name="volts_title">VOLTAGE</string>
+    <string name="volts_label">volts</string>
+    <string name="amps_title">CURRENT</string>
+    <string name="amps_label">ampere</string>
+
+    <string name="wwind_label">Wind:</string>
+    <string name="humid_label">Humidity:</string>
 </resources>

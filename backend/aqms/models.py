@@ -9,7 +9,7 @@ class PowerManager(models.Manager):
 
 
 class Aqms(models.Model):
-    ppm = models.DecimalField(max_digits=6, decimal_places=3)
+    ppm = models.DecimalField(max_digits=6, decimal_places=3, null=True)
 
     vol_pz = models.DecimalField(max_digits=6, decimal_places=3)
     amp_pz = models.DecimalField(max_digits=6, decimal_places=3)
