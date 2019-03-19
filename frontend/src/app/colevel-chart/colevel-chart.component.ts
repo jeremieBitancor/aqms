@@ -29,17 +29,19 @@ export class ColevelChartComponent implements OnInit {
   constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
-    this.getCoD();
-    this.getCoW();
-    this.getCoM();
+    let d = formatDate(new Date(), "yyyy-MM-dd", "en");
+    let week = moment(d).week();
+    this.getCoD(this.year, this.month, this.day);
+    this.getCoW(week);
+    this.getCoM(this.year, this.month);
     this.getDate();
   }
 
   getDate() {
     // console.log(this.date.value);
 
-    this._aqmsService.date(this.month, this.day, this.year);
-    this._aqmsService.getWeek(this.dateData);
+    // this._aqmsService.date(this.month, this.day, this.year);
+    // this._aqmsService.getWeek(this.dateData);
 
     this.date.valueChanges.subscribe(data => {
       this.dateData = data;
@@ -47,17 +49,22 @@ export class ColevelChartComponent implements OnInit {
       let month = formatDate(this.dateData, "MM", "en").replace(/^0+/, "");
       let day = formatDate(this.dateData, "dd", "en").replace(/^0+/, "");
 
-      this._aqmsService.date(month, day, year);
-      this._aqmsService.getWeek(this.dateData);
+      // this._aqmsService.date(month, day, year);
+      // this._aqmsService.getWeek(this.dateData);
 
-      this.getCoD();
-      this.getCoW();
-      this.getCoM();
+      let d = formatDate(this.dateData, "yyyy-MM-dd", "en");
+      let week = moment(d).week();
+      this.coChartD.destroy();
+      this.getCoD(month, day, year);
+      this.coChartW.destroy();
+      this.getCoW(week);
+      this.coChartM.destroy();
+      this.getCoM(year, month);
     });
   }
 
-  getCoD() {
-    this._aqmsService.getColevelDaily().subscribe(data => {
+  getCoD(month, day, year) {
+    this._aqmsService.getColevelDaily(month, day, year).subscribe(data => {
       this.coD$ = data;
       let hour = data.map(data => data.hour);
       let ave_co = data.map(data => data.ave_co);
@@ -133,8 +140,8 @@ export class ColevelChartComponent implements OnInit {
       });
     });
   }
-  getCoW() {
-    this._aqmsService.getColevelWeekly().subscribe(data => {
+  getCoW(week) {
+    this._aqmsService.getColevelWeekly(week).subscribe(data => {
       this.coW$ = data;
       let weekday = data.map(data => data.weekday);
       let ave_co = data.map(data => data.ave_co);
@@ -229,8 +236,8 @@ export class ColevelChartComponent implements OnInit {
       });
     });
   }
-  getCoM() {
-    this._aqmsService.getColevelMonthly().subscribe(data => {
+  getCoM(year, month) {
+    this._aqmsService.getColevelMonthly(year, month).subscribe(data => {
       this.coM$ = data;
       let week = data.map(data => data.week);
       let ave_co = data.map(data => data.ave_co);

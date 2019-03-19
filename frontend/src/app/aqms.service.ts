@@ -24,28 +24,28 @@ export class AqmsService {
 
   constructor(private http: HttpClient) {}
 
-  date(month, day, year) {
-    this.month = month;
-    this.day = day;
-    this.year = year;
+  // date(month, day, year) {
+  //   this.month = month;
+  //   this.day = day;
+  //   this.year = year;
 
-    this.getColevelDaily();
-    this.getColevelMonthly();
-    this.getWindspeedDaily();
-    this.getWindspeedMonthly();
-    this.getPowerDaily();
-    this.getPowerMonthly();
+  //   this.getColevelDaily();
+  //   this.getColevelMonthly();
+  //   this.getWindspeedDaily();
+  //   this.getWindspeedMonthly();
+  //   this.getPowerDaily();
+  //   this.getPowerMonthly();
 
-    // console.log(this.month, this.day, this.year);
-  }
-  getWeek(date) {
-    let d = formatDate(date, "yyyy-MM-dd", "en");
-    this.week = moment(d).week();
-    console.log(this.week);
-    this.getColevelWeekly();
-    this.getWindspeedWeekly();
-    this.getPowerWeekly();
-  }
+  //   console.log(this.month, this.day, this.year);
+  // }
+  // getWeek(date) {
+  //   let d = formatDate(date, "yyyy-MM-dd", "en");
+  //   this.week = moment(d).week();
+  // console.log(this.week);
+  //   this.getColevelWeekly();
+  //   this.getWindspeedWeekly();
+  //   this.getPowerWeekly();
+  // }
 
   getAqms() {
     return this.http.get(this._aqmsURL);
@@ -53,63 +53,50 @@ export class AqmsService {
   getWeather(): Observable<any> {
     return this.http.get<any>(this._weatherURL);
   }
-  getColevelDaily(): Observable<any> {
+  getColevelDaily(month, day, year): Observable<any> {
     let url =
-      this._coURL +
-      "hourly?year=" +
-      this.year +
-      "&month=" +
-      this.month +
-      "&day=" +
-      this.day;
+      this._coURL + "hourly?year=" + year + "&month=" + month + "&day=" + day;
     return this.http.get<any>(url);
   }
-  getWindspeedDaily(): Observable<any> {
+  getWindspeedDaily(month, day, year): Observable<any> {
     let url =
-      this._windURL +
-      "hourly?year=" +
-      this.year +
-      "&month=" +
-      this.month +
-      "&day=" +
-      this.day;
+      this._windURL + "hourly?year=" + year + "&month=" + month + "&day=" + day;
     return this.http.get<any>(url);
   }
-  getPowerDaily(): Observable<any> {
+  getPowerDaily(month, day, year): Observable<any> {
+    console.log(month, day, year);
     let url =
       this._powerURL +
       "hourly?year=" +
-      this.year +
+      year +
       "&month=" +
-      this.month +
+      month +
       "&day=" +
-      this.day;
+      day;
     return this.http.get<any>(url);
   }
-  getColevelWeekly(): Observable<any> {
-    let url = this._coURL + "daily?week=" + this.week;
+  getColevelWeekly(week): Observable<any> {
+    let url = this._coURL + "daily?week=" + week;
     return this.http.get<any>(url);
   }
-  getWindspeedWeekly(): Observable<any> {
-    let url = this._windURL + "daily?week=" + this.week;
+  getWindspeedWeekly(week): Observable<any> {
+    let url = this._windURL + "daily?week=" + week;
     return this.http.get<any>(url);
   }
-  getPowerWeekly(): Observable<any> {
-    let url = this._powerURL + "daily?week=" + this.week;
+  getPowerWeekly(week): Observable<any> {
+    let url = this._powerURL + "daily?week=" + week;
     return this.http.get<any>(url);
   }
-  getColevelMonthly(): Observable<any> {
-    let url = this._coURL + "weekly?year=" + this.year + "&month=" + this.month;
+  getColevelMonthly(year, month): Observable<any> {
+    let url = this._coURL + "weekly?year=" + year + "&month=" + month;
     return this.http.get<any>(url);
   }
-  getWindspeedMonthly(): Observable<any> {
-    let url =
-      this._windURL + "weekly?year=" + this.year + "&month=" + this.month;
+  getWindspeedMonthly(year, month): Observable<any> {
+    let url = this._windURL + "weekly?year=" + year + "&month=" + month;
     return this.http.get<any>(url);
   }
-  getPowerMonthly(): Observable<any> {
-    let url =
-      this._powerURL + "weekly?year=" + this.year + "&month=" + this.month;
+  getPowerMonthly(year, month): Observable<any> {
+    let url = this._powerURL + "weekly?year=" + year + "&month=" + month;
     return this.http.get<any>(url);
   }
 }

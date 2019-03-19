@@ -30,14 +30,16 @@ export class WindspeedChartComponent implements OnInit {
   constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
-    this.getWsD();
-    this.getWsW();
-    this.getWsM();
+    let d = formatDate(new Date(), "yyyy-MM-dd", "en");
+    let week = moment(d).week();
+    this.getWsD(this.year, this.month, this.day);
+    this.getWsW(week);
+    this.getWsM(this.year, this.month);
     this.getDate();
   }
   getDate() {
-    this._aqmsService.date(this.month, this.day, this.year);
-    this._aqmsService.getWeek(this.dateData);
+    // this._aqmsService.date(this.month, this.day, this.year);
+    // this._aqmsService.getWeek(this.dateData);
 
     this.date.valueChanges.subscribe(data => {
       this.dateData = data;
@@ -45,16 +47,21 @@ export class WindspeedChartComponent implements OnInit {
       let month = formatDate(this.dateData, "MM", "en").replace(/^0+/, "");
       let day = formatDate(this.dateData, "dd", "en").replace(/^0+/, "");
 
-      this._aqmsService.date(month, day, year);
-      this._aqmsService.getWeek(this.dateData);
+      // this._aqmsService.date(month, day, year);
+      // this._aqmsService.getWeek(this.dateData);
 
-      this.getWsD();
-      this.getWsW();
-      this.getWsM();
+      let d = formatDate(this.dateData, "yyyy-MM-dd", "en");
+      let week = moment(d).week();
+      this.wsChartD.destroy();
+      this.getWsD(month, day, year);
+      this.wsChartW.destroy();
+      this.getWsW(week);
+      this.wsChartM.destroy();
+      this.getWsM(year, month);
     });
   }
-  getWsD() {
-    this._aqmsService.getWindspeedDaily().subscribe(data => {
+  getWsD(month, day, year) {
+    this._aqmsService.getWindspeedDaily(month, day, year).subscribe(data => {
       this.wsD$ = data;
 
       let hour = data.map(data => data.hour);
@@ -115,8 +122,8 @@ export class WindspeedChartComponent implements OnInit {
       });
     });
   }
-  getWsW() {
-    this._aqmsService.getWindspeedWeekly().subscribe(data => {
+  getWsW(week) {
+    this._aqmsService.getWindspeedWeekly(week).subscribe(data => {
       this.wsW$ = data;
       let weekday = data.map(data => data.weekday);
       let ave_wind = data.map(data => data.ave_wind);
@@ -197,8 +204,8 @@ export class WindspeedChartComponent implements OnInit {
       });
     });
   }
-  getWsM() {
-    this._aqmsService.getWindspeedMonthly().subscribe(data => {
+  getWsM(month, year) {
+    this._aqmsService.getWindspeedMonthly(month, year).subscribe(data => {
       this.wsM$ = data;
 
       let week = data.map(data => data.week);

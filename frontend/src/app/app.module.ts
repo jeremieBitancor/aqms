@@ -14,9 +14,7 @@ import { ChartpageComponent } from "./chartpage/chartpage.component";
 import { AqmsService } from "./aqms.service";
 import { WeatherComponent } from "./weather/weather.component";
 import { ColevelChartComponent } from "./colevel-chart/colevel-chart.component";
-import { DailyChartComponent } from "./daily-chart/daily-chart.component";
-import { WeeklyChartComponent } from "./weekly-chart/weekly-chart.component";
-import { MonthlyChartComponent } from "./monthly-chart/monthly-chart.component";
+
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -24,8 +22,8 @@ import { MatNativeDateModule } from "@angular/material";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DateComponent } from "./date/date.component";
-import { WindspeedChartComponent } from './windspeed-chart/windspeed-chart.component';
-import { PowerChartComponent } from './power-chart/power-chart.component';
+import { WindspeedChartComponent } from "./windspeed-chart/windspeed-chart.component";
+import { PowerChartComponent } from "./power-chart/power-chart.component";
 
 @NgModule({
   declarations: [
@@ -35,9 +33,7 @@ import { PowerChartComponent } from './power-chart/power-chart.component';
     ChartpageComponent,
     WeatherComponent,
     ColevelChartComponent,
-    DailyChartComponent,
-    WeeklyChartComponent,
-    MonthlyChartComponent,
+
     DateComponent,
     WindspeedChartComponent,
     PowerChartComponent

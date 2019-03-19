@@ -28,7 +28,7 @@ export class DateComponent implements OnInit {
       let day = formatDate(this.dateData, "dd", "en").replace(/^0+/, "");
       // console.log(formatDate(this.dateData, "MM dd yyyy", "en"));
 
-      this._aqmsService.date(month, day, year);
+      // this._aqmsService.date(month, day, year);
     });
 
     // console.log(this.year, this.month, this.day);

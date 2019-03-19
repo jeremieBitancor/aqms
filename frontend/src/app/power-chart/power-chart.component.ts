@@ -29,11 +29,13 @@ export class PowerChartComponent implements OnInit {
   constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
-    this._aqmsService.date(this.month, this.day, this.year);
-    this._aqmsService.getWeek(this.dateData);
-    this.getPwD();
-    this.getPwW();
-    this.getPwM();
+    // this._aqmsService.date(this.month, this.day, this.year);
+    // this._aqmsService.getWeek(this.dateData);
+    let d = formatDate(new Date(), "yyyy-MM-dd", "en");
+    let week = moment(d).week();
+    this.getPwD(this.year, this.month, this.day);
+    this.getPwW(week);
+    this.getPwM(this.year, this.month);
     this.getDate();
   }
 
@@ -46,17 +48,22 @@ export class PowerChartComponent implements OnInit {
       let month = formatDate(this.dateData, "MM", "en").replace(/^0+/, "");
       let day = formatDate(this.dateData, "dd", "en").replace(/^0+/, "");
 
-      this._aqmsService.date(month, day, year);
-      this._aqmsService.getWeek(this.dateData);
+      // this._aqmsService.date(month, day, year);
+      // this._aqmsService.getWeek(this.dateData);
+      let d = formatDate(this.dateData, "yyyy-MM-dd", "en");
+      let week = moment(d).week();
 
-      this.getPwD();
-      this.getPwW();
-      this.getPwM();
+      this.pwChartD.destroy();
+      this.getPwD(month, day, year);
+      this.pwChartW.destroy();
+      this.getPwW(week);
+      this.pwChartM.destroy();
+      this.getPwM(year, month);
     });
   }
 
-  getPwD() {
-    this._aqmsService.getPowerDaily().subscribe(data => {
+  getPwD(month, day, year) {
+    this._aqmsService.getPowerDaily(month, day, year).subscribe(data => {
       this.pwD$ = data;
 
       let hour = data.map(data => data.hour);
@@ -66,7 +73,7 @@ export class PowerChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < t_wat_wt.length; x++) {
-        consumedPower.push("0.062");
+        consumedPower.push("1.500");
       }
 
       this.pwChartD = new Chart("pwCanvasD", {
@@ -147,8 +154,8 @@ export class PowerChartComponent implements OnInit {
       });
     });
   }
-  getPwW() {
-    this._aqmsService.getPowerWeekly().subscribe(data => {
+  getPwW(week) {
+    this._aqmsService.getPowerWeekly(week).subscribe(data => {
       this.pwW$ = data;
       let weekday = data.map(data => data.weekday);
       let t_wat_wt = data.map(data => data.t_wat_wt);
@@ -179,7 +186,7 @@ export class PowerChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < t_wat_wt.length; x++) {
-        consumedPower.push("1.488");
+        consumedPower.push("36");
       }
 
       this.pwChartW = new Chart("pwCanvasW", {
@@ -260,8 +267,8 @@ export class PowerChartComponent implements OnInit {
       });
     });
   }
-  getPwM() {
-    this._aqmsService.getPowerMonthly().subscribe(data => {
+  getPwM(year, month) {
+    this._aqmsService.getPowerMonthly(year, month).subscribe(data => {
       this.pwM$ = data;
 
       let week = data.map(data => data.week);
@@ -272,7 +279,7 @@ export class PowerChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < t_wat_wt.length; x++) {
-        consumedPower.push("10.416");
+        consumedPower.push("252");
       }
 
       this.pwChartM = new Chart("pwCanvasM", {
