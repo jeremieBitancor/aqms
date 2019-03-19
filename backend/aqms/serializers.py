@@ -29,14 +29,14 @@ class AqmsSerializer(serializers.ModelSerializer):
 
 
 class AqmsLatestSerializer(serializers.ModelSerializer):
-    wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
-    vol_all = serializers.DecimalField(max_digits=6, decimal_places=3)
-    amp_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    # wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    # vol_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    # amp_all = serializers.DecimalField(max_digits=6, decimal_places=3)
 
     class Meta:
         model = Aqms
         fields = ('date_time', 'ppm', 'windspeed',
-                  'wat_all', 'vol_all', 'amp_all')
+                  'wat_pz', 'vol_pz', 'amp_pz', 'wat_wt', 'vol_wt', 'amp_wt')
 
 
 class PowerAveSerializer(serializers.ModelSerializer):
