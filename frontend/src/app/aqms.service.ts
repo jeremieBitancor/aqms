@@ -30,13 +30,21 @@ export class AqmsService {
     this.year = year;
 
     this.getColevelDaily();
+    this.getColevelMonthly();
+    this.getWindspeedDaily();
+    this.getWindspeedMonthly();
+    this.getPowerDaily();
+    this.getPowerMonthly();
 
     // console.log(this.month, this.day, this.year);
   }
   getWeek(date) {
     let d = formatDate(date, "yyyy-MM-dd", "en");
     this.week = moment(d).week();
+    console.log(this.week);
     this.getColevelWeekly();
+    this.getWindspeedWeekly();
+    this.getPowerWeekly();
   }
 
   getAqms() {

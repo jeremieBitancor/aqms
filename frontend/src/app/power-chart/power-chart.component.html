@@ -1,0 +1,29 @@
+<mat-form-field>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    placeholder="Choose a date"
+    [formControl]="date"
+  />
+  <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date" /> -->
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <!-- <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
+          A valid date mm/dd/yyyy is required
+        </mat-error> -->
+</mat-form-field>
+<div>
+  <div class="label">
+    Power
+    <span id="wt">Wind Turbine</span>
+    <span id="pz">Piezo</span>
+    <span id="both">Both</span>
+    <span id="con">Consumed</span>
+  </div>
+  <div>Day</div>
+  <canvas id="pwCanvasD"></canvas>
+  <div>Week</div>
+  <canvas id="pwCanvasW"></canvas>
+  <div>Month</div>
+  <canvas id="pwCanvasM"></canvas>
+</div>

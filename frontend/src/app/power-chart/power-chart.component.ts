@@ -6,18 +6,18 @@ import { FormControl } from "@angular/forms";
 import * as moment from "moment";
 
 @Component({
-  selector: "app-colevel-chart",
-  templateUrl: "./colevel-chart.component.html",
-  styleUrls: ["./colevel-chart.component.scss"]
+  selector: "app-power-chart",
+  templateUrl: "./power-chart.component.html",
+  styleUrls: ["./power-chart.component.scss"]
 })
-export class ColevelChartComponent implements OnInit {
-  coD$ = [];
-  coW$ = [];
-  coM$ = [];
+export class PowerChartComponent implements OnInit {
+  pwD$ = [];
+  pwW$ = [];
+  pwM$ = [];
 
-  coChartD: any;
-  coChartW: any;
-  coChartM: any;
+  pwChartD: any;
+  pwChartW: any;
+  pwChartM: any;
 
   date = new FormControl(new Date());
   dateData = moment().format("MM DD YYYY");
@@ -29,17 +29,16 @@ export class ColevelChartComponent implements OnInit {
   constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
-    this.getCoD();
-    this.getCoW();
-    this.getCoM();
+    this._aqmsService.date(this.month, this.day, this.year);
+    this._aqmsService.getWeek(this.dateData);
+    this.getPwD();
+    this.getPwW();
+    this.getPwM();
     this.getDate();
   }
 
   getDate() {
     // console.log(this.date.value);
-
-    this._aqmsService.date(this.month, this.day, this.year);
-    this._aqmsService.getWeek(this.dateData);
 
     this.date.valueChanges.subscribe(data => {
       this.dateData = data;
@@ -50,55 +49,70 @@ export class ColevelChartComponent implements OnInit {
       this._aqmsService.date(month, day, year);
       this._aqmsService.getWeek(this.dateData);
 
-      this.getCoD();
-      this.getCoW();
-      this.getCoM();
+      this.getPwD();
+      this.getPwW();
+      this.getPwM();
     });
   }
 
-  getCoD() {
-    this._aqmsService.getColevelDaily().subscribe(data => {
-      this.coD$ = data;
-      let hour = data.map(data => data.hour);
-      let ave_co = data.map(data => data.ave_co);
-      let bgColor = new Array();
+  getPwD() {
+    this._aqmsService.getPowerDaily().subscribe(data => {
+      this.pwD$ = data;
 
-      for (let x = 0; x < ave_co.length; x++) {
-        if (ave_co[x] <= 50) {
-          bgColor.push("#00E676");
-        } else if (ave_co[x] >= 51 && ave_co[x] <= 100) {
-          bgColor.push("#EEFF41");
-        } else if (ave_co[x] >= 101 && ave_co[x] <= 150) {
-          bgColor.push("#FFA000");
-        } else if (ave_co[x] >= 151 && ave_co[x] <= 200) {
-          bgColor.push("#B71C1C");
-        } else if (ave_co[x] >= 201 && ave_co[x] <= 300) {
-          bgColor.push("#9C27B0");
-        } else if (ave_co[x] > 300) {
-          bgColor.push("#880E4F");
-        }
+      let hour = data.map(data => data.hour);
+      let t_wat_wt = data.map(data => data.t_wat_wt);
+      let t_wat_pz = data.map(data => data.t_wat_pz);
+      let t_wat_all = data.map(data => data.t_wat_all);
+      let consumedPower = new Array();
+
+      for (var x = 0; x < t_wat_wt.length; x++) {
+        consumedPower.push("0.062");
       }
 
-      this.coChartD = new Chart("coCanvasD", {
+      this.pwChartD = new Chart("pwCanvasD", {
         type: "bar",
         data: {
           labels: hour,
           datasets: [
             {
-              label: "CO Level",
-              data: ave_co,
+              label: "Wind Turbine",
+              data: t_wat_wt,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: bgColor
+              backgroundColor: "#E0E0E0"
+            },
+            {
+              label: "Piezo",
+              data: t_wat_pz,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#FFF176"
+            },
+            {
+              label: "Both",
+              data: t_wat_all,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#4FC3F7"
+            },
+            {
+              label: "Consumed",
+              data: consumedPower,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#EF5350"
             }
           ]
         },
         options: {
+          tooltips: {
+            mode: "label"
+          },
           legend: {
             display: false,
             position: "left",
             labels: {
-              fontSize: 16,
+              fontSize: 14,
               fontStyle: "bold"
             }
           },
@@ -122,7 +136,7 @@ export class ColevelChartComponent implements OnInit {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "ppm",
+                  labelString: "watts",
                   fontSize: 14,
                   fontStyle: "bold"
                 }
@@ -133,18 +147,18 @@ export class ColevelChartComponent implements OnInit {
       });
     });
   }
-  getCoW() {
-    this._aqmsService.getColevelWeekly().subscribe(data => {
-      this.coW$ = data;
+  getPwW() {
+    this._aqmsService.getPowerWeekly().subscribe(data => {
+      this.pwW$ = data;
       let weekday = data.map(data => data.weekday);
-      let ave_co = data.map(data => data.ave_co);
+      let t_wat_wt = data.map(data => data.t_wat_wt);
+      let t_wat_pz = data.map(data => data.t_wat_pz);
+      let t_wat_all = data.map(data => data.t_wat_all);
+      // console.log(t_wat_all);
+
       let daysOfWeek = new Array();
-      let bgColor = new Array();
-      // let aveCoFixed = new Array();
 
       for (var x = 0; x < weekday.length; x++) {
-        // aveCoFixed.push(ave_co[x].toFixed(2));
-
         if (weekday[x] == 1) {
           daysOfWeek.push("Sunday");
         } else if (weekday[x] == 2) {
@@ -160,36 +174,53 @@ export class ColevelChartComponent implements OnInit {
         } else if (weekday[x] == 7) {
           daysOfWeek.push("Saturday");
         }
-        if (ave_co[x] <= 50) {
-          bgColor.push("#00E676");
-        } else if (ave_co[x] >= 51 && ave_co[x] <= 100) {
-          bgColor.push("#EEFF41");
-        } else if (ave_co[x] >= 101 && ave_co[x] <= 150) {
-          bgColor.push("#FFA000");
-        } else if (ave_co[x] >= 151 && ave_co[x] <= 200) {
-          bgColor.push("#B71C1C");
-        } else if (ave_co[x] >= 201 && ave_co[x] <= 300) {
-          bgColor.push("#9C27B0");
-        } else if (ave_co[x] > 300) {
-          bgColor.push("#880E4F");
-        }
       }
 
-      this.coChartW = new Chart("coCanvasW", {
+      let consumedPower = new Array();
+
+      for (var x = 0; x < t_wat_wt.length; x++) {
+        consumedPower.push("1.488");
+      }
+
+      this.pwChartW = new Chart("pwCanvasW", {
         type: "bar",
         data: {
           labels: daysOfWeek,
           datasets: [
             {
-              label: "Co Level",
-              data: ave_co,
+              label: "Wind Turbine",
+              data: t_wat_wt,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: bgColor
+              backgroundColor: "#E0E0E0"
+            },
+            {
+              label: "Piezo",
+              data: t_wat_pz,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#FFF176"
+            },
+            {
+              label: "Both",
+              data: t_wat_all,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#4FC3F7"
+            },
+            {
+              label: "Consumed",
+              data: consumedPower,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#EF5350"
             }
           ]
         },
         options: {
+          tooltips: {
+            mode: "label"
+          },
           legend: {
             display: false,
             position: "left",
@@ -218,7 +249,7 @@ export class ColevelChartComponent implements OnInit {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "ppm",
+                  labelString: "watts",
                   fontSize: 14,
                   fontStyle: "bold"
                 }
@@ -229,47 +260,60 @@ export class ColevelChartComponent implements OnInit {
       });
     });
   }
-  getCoM() {
-    this._aqmsService.getColevelMonthly().subscribe(data => {
-      this.coM$ = data;
+  getPwM() {
+    this._aqmsService.getPowerMonthly().subscribe(data => {
+      this.pwM$ = data;
+
       let week = data.map(data => data.week);
-      let ave_co = data.map(data => data.ave_co);
+      let t_wat_wt = data.map(data => data.t_wat_wt);
+      let t_wat_pz = data.map(data => data.t_wat_pz);
+      let t_wat_all = data.map(data => data.t_wat_all);
 
-      let aveCoFixed = new Array();
-      let bgColor = new Array();
+      let consumedPower = new Array();
 
-      for (let x = 0; x < ave_co.length; x++) {
-        // aveCoFixed.push(ave_co[x].toFixed(2));
-
-        if (ave_co[x] <= 50) {
-          bgColor.push("#00E676");
-        } else if (ave_co[x] >= 51 && ave_co <= 100) {
-          bgColor.push("#EEFF41");
-        } else if (ave_co[x] >= 101 && ave_co <= 150) {
-          bgColor.push("#FFA000");
-        } else if (ave_co[x] >= 151 && ave_co <= 200) {
-          bgColor.push("#B71C1C");
-        } else if (ave_co[x] >= 201 && ave_co <= 300) {
-          bgColor.push("#9C27B0");
-        } else if (ave_co[x] > 300) {
-          bgColor.push("#880E4F");
-        }
+      for (var x = 0; x < t_wat_wt.length; x++) {
+        consumedPower.push("10.416");
       }
-      this.coChartM = new Chart("coCanvasM", {
+
+      this.pwChartM = new Chart("pwCanvasM", {
         type: "bar",
         data: {
           labels: week,
           datasets: [
             {
-              label: "CO Level",
-              data: aveCoFixed,
+              label: "Wind Turbine",
+              data: t_wat_wt,
               borderColor: "#3cba9f",
               fill: false,
-              backgroundColor: bgColor
+              backgroundColor: "#E0E0E0"
+            },
+            {
+              label: "Piezo",
+              data: t_wat_pz,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#FFF176"
+            },
+            {
+              label: "Both",
+              data: t_wat_all,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#4FC3F7"
+            },
+            {
+              label: "Consumed",
+              data: consumedPower,
+              borderColor: "#3cba9f",
+              fill: false,
+              backgroundColor: "#EF5350"
             }
           ]
         },
         options: {
+          tooltips: {
+            mode: "label"
+          },
           legend: {
             display: false,
             position: "left",
@@ -298,7 +342,7 @@ export class ColevelChartComponent implements OnInit {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "ppm",
+                  labelString: "watts",
                   fontSize: 14,
                   fontStyle: "bold"
                 }

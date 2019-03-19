@@ -1,0 +1,27 @@
+div {
+  margin: 30px;
+  font-weight: bold;
+}
+span {
+  padding: 8px;
+  color: #212121;
+  font-weight: 500;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#wt {
+  margin-left: 20px;
+  background-color: #e0e0e0;
+}
+#pz {
+  background-color: #fff176;
+}
+#both {
+  background-color: #4fc3f7;
+}
+#con {
+  background-color: #ef5350;
+}

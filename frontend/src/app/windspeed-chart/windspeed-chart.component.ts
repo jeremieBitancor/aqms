@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+
 import Chart from "chart.js";
 import { AqmsService } from "../aqms.service";
 import { formatDate } from "@angular/common";
@@ -6,18 +7,18 @@ import { FormControl } from "@angular/forms";
 import * as moment from "moment";
 
 @Component({
-  selector: "app-colevel-chart",
-  templateUrl: "./colevel-chart.component.html",
-  styleUrls: ["./colevel-chart.component.scss"]
+  selector: "app-windspeed-chart",
+  templateUrl: "./windspeed-chart.component.html",
+  styleUrls: ["./windspeed-chart.component.scss"]
 })
-export class ColevelChartComponent implements OnInit {
-  coD$ = [];
-  coW$ = [];
-  coM$ = [];
+export class WindspeedChartComponent implements OnInit {
+  wsD$ = [];
+  wsW$ = [];
+  wsM$ = [];
 
-  coChartD: any;
-  coChartW: any;
-  coChartM: any;
+  wsChartD: any;
+  wsChartW: any;
+  wsChartM: any;
 
   date = new FormControl(new Date());
   dateData = moment().format("MM DD YYYY");
@@ -29,15 +30,12 @@ export class ColevelChartComponent implements OnInit {
   constructor(private _aqmsService: AqmsService) {}
 
   ngOnInit() {
-    this.getCoD();
-    this.getCoW();
-    this.getCoM();
+    this.getWsD();
+    this.getWsW();
+    this.getWsM();
     this.getDate();
   }
-
   getDate() {
-    // console.log(this.date.value);
-
     this._aqmsService.date(this.month, this.day, this.year);
     this._aqmsService.getWeek(this.dateData);
 
@@ -50,46 +48,30 @@ export class ColevelChartComponent implements OnInit {
       this._aqmsService.date(month, day, year);
       this._aqmsService.getWeek(this.dateData);
 
-      this.getCoD();
-      this.getCoW();
-      this.getCoM();
+      this.getWsD();
+      this.getWsW();
+      this.getWsM();
     });
   }
+  getWsD() {
+    this._aqmsService.getWindspeedDaily().subscribe(data => {
+      this.wsD$ = data;
 
-  getCoD() {
-    this._aqmsService.getColevelDaily().subscribe(data => {
-      this.coD$ = data;
       let hour = data.map(data => data.hour);
-      let ave_co = data.map(data => data.ave_co);
-      let bgColor = new Array();
+      let ave_wind = data.map(data => data.ave_wind);
 
-      for (let x = 0; x < ave_co.length; x++) {
-        if (ave_co[x] <= 50) {
-          bgColor.push("#00E676");
-        } else if (ave_co[x] >= 51 && ave_co[x] <= 100) {
-          bgColor.push("#EEFF41");
-        } else if (ave_co[x] >= 101 && ave_co[x] <= 150) {
-          bgColor.push("#FFA000");
-        } else if (ave_co[x] >= 151 && ave_co[x] <= 200) {
-          bgColor.push("#B71C1C");
-        } else if (ave_co[x] >= 201 && ave_co[x] <= 300) {
-          bgColor.push("#9C27B0");
-        } else if (ave_co[x] > 300) {
-          bgColor.push("#880E4F");
-        }
-      }
-
-      this.coChartD = new Chart("coCanvasD", {
-        type: "bar",
+      this.wsChartD = new Chart("wsCanvasD", {
+        type: "line",
         data: {
           labels: hour,
           datasets: [
             {
-              label: "CO Level",
-              data: ave_co,
-              borderColor: "#3cba9f",
+              label: "Windspeed",
+              data: ave_wind,
+              borderColor: "#0288D1",
+              backgroundColor: "#0288D1",
               fill: false,
-              backgroundColor: bgColor
+              borderWidth: 3
             }
           ]
         },
@@ -122,7 +104,7 @@ export class ColevelChartComponent implements OnInit {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "ppm",
+                  labelString: "m/s",
                   fontSize: 14,
                   fontStyle: "bold"
                 }
@@ -133,18 +115,16 @@ export class ColevelChartComponent implements OnInit {
       });
     });
   }
-  getCoW() {
-    this._aqmsService.getColevelWeekly().subscribe(data => {
-      this.coW$ = data;
+  getWsW() {
+    this._aqmsService.getWindspeedWeekly().subscribe(data => {
+      this.wsW$ = data;
       let weekday = data.map(data => data.weekday);
-      let ave_co = data.map(data => data.ave_co);
+      let ave_wind = data.map(data => data.ave_wind);
       let daysOfWeek = new Array();
-      let bgColor = new Array();
-      // let aveCoFixed = new Array();
+      // let aveWindFixed = new Array();
 
       for (var x = 0; x < weekday.length; x++) {
-        // aveCoFixed.push(ave_co[x].toFixed(2));
-
+        // aveWindFixed.push(ave_wind[x].toFixed(2));
         if (weekday[x] == 1) {
           daysOfWeek.push("Sunday");
         } else if (weekday[x] == 2) {
@@ -160,32 +140,20 @@ export class ColevelChartComponent implements OnInit {
         } else if (weekday[x] == 7) {
           daysOfWeek.push("Saturday");
         }
-        if (ave_co[x] <= 50) {
-          bgColor.push("#00E676");
-        } else if (ave_co[x] >= 51 && ave_co[x] <= 100) {
-          bgColor.push("#EEFF41");
-        } else if (ave_co[x] >= 101 && ave_co[x] <= 150) {
-          bgColor.push("#FFA000");
-        } else if (ave_co[x] >= 151 && ave_co[x] <= 200) {
-          bgColor.push("#B71C1C");
-        } else if (ave_co[x] >= 201 && ave_co[x] <= 300) {
-          bgColor.push("#9C27B0");
-        } else if (ave_co[x] > 300) {
-          bgColor.push("#880E4F");
-        }
       }
 
-      this.coChartW = new Chart("coCanvasW", {
-        type: "bar",
+      this.wsChartW = new Chart("wsCanvasW", {
+        type: "line",
         data: {
           labels: daysOfWeek,
           datasets: [
             {
-              label: "Co Level",
-              data: ave_co,
-              borderColor: "#3cba9f",
+              label: "Windspeed",
+              data: ave_wind,
+              borderColor: "#0288D1",
+              backgroundColor: "#0288D1",
               fill: false,
-              backgroundColor: bgColor
+              borderWidth: 3
             }
           ]
         },
@@ -218,7 +186,7 @@ export class ColevelChartComponent implements OnInit {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "ppm",
+                  labelString: "m/s",
                   fontSize: 14,
                   fontStyle: "bold"
                 }
@@ -229,43 +197,30 @@ export class ColevelChartComponent implements OnInit {
       });
     });
   }
-  getCoM() {
-    this._aqmsService.getColevelMonthly().subscribe(data => {
-      this.coM$ = data;
+  getWsM() {
+    this._aqmsService.getWindspeedMonthly().subscribe(data => {
+      this.wsM$ = data;
+
       let week = data.map(data => data.week);
-      let ave_co = data.map(data => data.ave_co);
+      let ave_wind = data.map(data => data.ave_wind);
+      // let aveWindFixed = new Array();
 
-      let aveCoFixed = new Array();
-      let bgColor = new Array();
+      // for (let x = 0; x < ave_wind.length; x++) {
+      //   aveWindFixed.push(ave_wind[x].toFixed(2));
+      // }
 
-      for (let x = 0; x < ave_co.length; x++) {
-        // aveCoFixed.push(ave_co[x].toFixed(2));
-
-        if (ave_co[x] <= 50) {
-          bgColor.push("#00E676");
-        } else if (ave_co[x] >= 51 && ave_co <= 100) {
-          bgColor.push("#EEFF41");
-        } else if (ave_co[x] >= 101 && ave_co <= 150) {
-          bgColor.push("#FFA000");
-        } else if (ave_co[x] >= 151 && ave_co <= 200) {
-          bgColor.push("#B71C1C");
-        } else if (ave_co[x] >= 201 && ave_co <= 300) {
-          bgColor.push("#9C27B0");
-        } else if (ave_co[x] > 300) {
-          bgColor.push("#880E4F");
-        }
-      }
-      this.coChartM = new Chart("coCanvasM", {
-        type: "bar",
+      this.wsChartM = new Chart("wsCanvasM", {
+        type: "line",
         data: {
           labels: week,
           datasets: [
             {
-              label: "CO Level",
-              data: aveCoFixed,
-              borderColor: "#3cba9f",
+              label: "Windspeed",
+              data: ave_wind,
+              borderColor: "#0288D1",
+              backgroundColor: "#0288D1",
               fill: false,
-              backgroundColor: bgColor
+              borderWidth: 3
             }
           ]
         },
@@ -298,7 +253,7 @@ export class ColevelChartComponent implements OnInit {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "ppm",
+                  labelString: "m/s",
                   fontSize: 14,
                   fontStyle: "bold"
                 }

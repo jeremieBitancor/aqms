@@ -24,6 +24,8 @@ import { MatNativeDateModule } from "@angular/material";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DateComponent } from "./date/date.component";
+import { WindspeedChartComponent } from './windspeed-chart/windspeed-chart.component';
+import { PowerChartComponent } from './power-chart/power-chart.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { DateComponent } from "./date/date.component";
     DailyChartComponent,
     WeeklyChartComponent,
     MonthlyChartComponent,
-    DateComponent
+    DateComponent,
+    WindspeedChartComponent,
+    PowerChartComponent
   ],
   imports: [
     BrowserModule,
