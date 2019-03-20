@@ -5,7 +5,7 @@ from django.db import models
 
 class PowerManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(wat_pz__gt=0, wat_wt__gt=0)
+        return super().get_queryset().filter(wat_pz__gt=0.000, wat_wt__gt=0.000)
 
 
 class Aqms(models.Model):
