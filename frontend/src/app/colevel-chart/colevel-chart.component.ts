@@ -31,7 +31,7 @@ export class ColevelChartComponent implements OnInit {
   ngOnInit() {
     let d = formatDate(new Date(), "yyyy-MM-dd", "en");
     let week = moment(d).week();
-    this.getCoD(this.year, this.month, this.day);
+    this.getCoD(this.month, this.day, this.year);
     this.getCoW(week);
     this.getCoM(this.year, this.month);
     this.getDate();
@@ -242,7 +242,7 @@ export class ColevelChartComponent implements OnInit {
       let week = data.map(data => data.week);
       let ave_co = data.map(data => data.ave_co);
 
-      let aveCoFixed = new Array();
+      // let aveCoFixed = new Array();
       let bgColor = new Array();
 
       for (let x = 0; x < ave_co.length; x++) {
@@ -269,7 +269,7 @@ export class ColevelChartComponent implements OnInit {
           datasets: [
             {
               label: "CO Level",
-              data: aveCoFixed,
+              data: ave_co,
               borderColor: "#3cba9f",
               fill: false,
               backgroundColor: bgColor

@@ -17,7 +17,7 @@
 
   <div class="data-label-wrapper-s">
     <div class="data-label-wrapper-s-item">
-      <span class="data-label">wind turbine power</span>
+      <span class="data-label">wind turbine</span>
       <span class="data-unit">watts</span>
       <br />
       <span class="data" *ngIf="(aqms$ | async) as aqms">{{
@@ -25,14 +25,14 @@
       }}</span>
     </div>
     <div class="data-label-wrapper-s-item">
-      <span class="data-label-s">wind turbine voltage</span>
+      <span class="data-label-s">voltage</span>
       <span class="data-unit-s">volts</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
         (aqms$ | async)?.vol_wt
       }}</span>
       <br />
-      <span class="data-label-s">wind turbine current</span>
+      <span class="data-label-s">current</span>
       <span class="data-unit-s">ampere</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
@@ -42,7 +42,7 @@
   </div>
   <div class="data-label-wrapper-s">
     <div class="data-label-wrapper-s-item">
-      <span class="data-label">piezo power</span>
+      <span class="data-label">piezo</span>
       <span class="data-unit">watts</span>
       <br />
       <span class="data" *ngIf="(aqms$ | async) as aqms">{{
@@ -50,14 +50,14 @@
       }}</span>
     </div>
     <div class="data-label-wrapper-s-item">
-      <span class="data-label-s">piezo voltage</span>
+      <span class="data-label-s">voltage</span>
       <span class="data-unit-s">volts</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{
         (aqms$ | async)?.vol_pz
       }}</span>
       <br />
-      <span class="data-label-s">piezo current</span>
+      <span class="data-label-s">current</span>
       <span class="data-unit-s">ampere</span>
       <br />
       <span class="data-s" *ngIf="(aqms$ | async) as aqms">{{

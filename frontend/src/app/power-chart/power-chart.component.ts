@@ -33,7 +33,7 @@ export class PowerChartComponent implements OnInit {
     // this._aqmsService.getWeek(this.dateData);
     let d = formatDate(new Date(), "yyyy-MM-dd", "en");
     let week = moment(d).week();
-    this.getPwD(this.year, this.month, this.day);
+    this.getPwD(this.month, this.day, this.year);
     this.getPwW(week);
     this.getPwM(this.year, this.month);
     this.getDate();

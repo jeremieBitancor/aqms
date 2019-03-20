@@ -32,7 +32,7 @@ export class WindspeedChartComponent implements OnInit {
   ngOnInit() {
     let d = formatDate(new Date(), "yyyy-MM-dd", "en");
     let week = moment(d).week();
-    this.getWsD(this.year, this.month, this.day);
+    this.getWsD(this.month, this.day, this.year);
     this.getWsW(week);
     this.getWsM(this.year, this.month);
     this.getDate();

@@ -64,7 +64,6 @@ export class AqmsService {
     return this.http.get<any>(url);
   }
   getPowerDaily(month, day, year): Observable<any> {
-    console.log(month, day, year);
     let url =
       this._powerURL +
       "hourly?year=" +
