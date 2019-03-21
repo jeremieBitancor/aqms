@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from aqms.models import Aqms
 from django.db.models.fields import FloatField, IntegerField, DecimalField
+from datetime import datetime
 
 
 class PowerSerializer(serializers.ModelSerializer):
@@ -29,14 +30,13 @@ class AqmsSerializer(serializers.ModelSerializer):
 
 
 class AqmsLatestSerializer(serializers.ModelSerializer):
-    # wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
-    # vol_all = serializers.DecimalField(max_digits=6, decimal_places=3)
-    # amp_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    date = serializers.DateField()
+    time = serializers.TimeField(format="%X")
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'ppm', 'windspeed',
-                  'wat_pz', 'vol_pz', 'amp_pz', 'wat_wt', 'vol_wt', 'amp_wt')
+        fields = ('ppm', 'windspeed',
+                  'wat_pz', 'vol_pz', 'amp_pz', 'wat_wt', 'vol_wt', 'amp_wt', 'date', 'time')
 
 
 class PowerAveSerializer(serializers.ModelSerializer):

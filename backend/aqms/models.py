@@ -1,11 +1,12 @@
 from django.db import models
+from django.db.models import Q
 
 # Create your models here.
 
 
 class PowerManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(wat_pz__gt=0.000, wat_wt__gt=0.000)
+        return super().get_queryset().filter(Q(wat_pz__gt=0) | Q(wat_wt__gt=0))
 
 
 class Aqms(models.Model):

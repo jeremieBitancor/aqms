@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from django.db.models.functions import ExtractHour, ExtractYear, ExtractWeek, ExtractMonth, ExtractWeekDay, ExtractDay
+from django.db.models.functions import ExtractHour, ExtractYear, ExtractWeek, ExtractMonth, ExtractWeekDay, ExtractDay, TruncDate, TruncTime
 from django.db.models import Avg, F, Sum
 from django.shortcuts import render
 
@@ -137,7 +137,8 @@ class AqmsLatestView(APIView):
         # queryset = Aqms.objects.values('date_time', 'ppm', 'windspeed').annotate(wat_all=(
         #     F('wat_pz')+F('wat_wt')), vol_all=(F('vol_pz')+F('vol_wt')), amp_all=(F('amp_pz')+F('amp_wt'))).order_by('-id')[0]
 
-        queryset = Aqms.objects.all().order_by('-id')[0]
+        queryset = Aqms.objects.all().annotate(
+            date=TruncDate('date_time'), time=TruncTime('date_time')).order_by('-id')[0]
 
         serializer_class = AqmsLatestSerializer(queryset, many=False)
         return Response(serializer_class.data)
