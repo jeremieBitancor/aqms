@@ -1,77 +1,160 @@
-.cont {
+// .cont {
+//   display: flex;
+//   flex-direction: row;
+//   background-color: #ffffff;
+//   align-content: space-between;
+//   margin-top: 0px;
+//   padding-top: 30px;
+//   flex-wrap: wrap;
+//   justify-content: center;
+// }
+
+// .data-label-wrapper {
+//   margin: 20px;
+//   text-align: center;
+//   flex-grow: 1;
+//   // background-color: green;
+// }
+
+// .data-label {
+//   margin: 50px 20px;
+//   // background-color: aqua;
+//   font-size: 20px;
+//   text-transform: uppercase;
+//   word-spacing: 0px;
+//   font-family: Arial, Helvetica, sans-serif;
+//   letter-spacing: normal;
+//   font-weight: 600;
+// }
+// .data-unit {
+//   margin: 5px;
+//   font-size: 20px;
+//   color: rgb(145, 147, 168);
+//   font-weight: 300;
+//   letter-spacing: normal;
+//   text-transform: none;
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+// .data {
+//   font-weight: 10;
+//   // background-color: azure;
+//   font-size: 40px;
+//   line-height: 120px;
+// }
+// .data-label-wrapper-s {
+//   margin: 30px;
+//   text-align: center;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   // background-color: red;
+// }
+// .data-label-wrapper-s-item {
+//   text-align: center;
+// }
+
+// .data-label-s {
+//   margin: 150px 20px;
+//   font-size: 15px;
+//   text-transform: uppercase;
+//   word-spacing: 0px;
+//   font-family: Arial, Helvetica, sans-serif;
+//   letter-spacing: normal;
+//   font-weight: 600;
+// }
+// .data-unit-s {
+//   font-size: 15px;
+//   text-transform: lowercase;
+//   color: rgb(145, 147, 168);
+//   font-weight: 300;
+//   letter-spacing: normal;
+//   text-transform: none;
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+// .data-s {
+//   font-size: 40px;
+//   font-weight: 10;
+// }
+
+// .cont {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+// }
+// .item {
+//   margin: 10px;
+//   font-weight: 200;
+// }
+// .data {
+//   text-transform: capitalize;
+// }
+// .label {
+//   font-weight: bold;
+//   color: rgb(145, 147, 168);
+// }
+
+.latestDataContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  // background-color: violet;
+}
+
+#dataContainer {
   display: flex;
   flex-direction: row;
-  background-color: #ffffff;
-  align-content: space-between;
-  margin-top: 0px;
-  padding-top: 30px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
+  margin: 10px;
 }
-
-.data-label-wrapper {
-  margin: 20px;
-  text-align: center;
-  flex-grow: 1;
+.colevel {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
   // background-color: green;
+  padding: 15px;
+  margin: 10px;
+  width: 300px;
 }
-
-.data-label {
-  margin: 50px 20px;
-  // background-color: aqua;
-  font-size: 30px;
-  text-transform: uppercase;
-  word-spacing: 0px;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: normal;
-  font-weight: 600;
+.windspeed {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // background-color: yellow;
+  padding: 15px;
+  margin: 10px;
+  width: 300px;
 }
-.data-unit {
-  margin: 5px;
-  font-size: 30px;
-  color: rgb(145, 147, 168);
-  font-weight: 300;
-  letter-spacing: normal;
-  text-transform: none;
-  font-family: Arial, Helvetica, sans-serif;
+.windturbine {
+  display: flex;
+  flex-direction: column;
+  // background-color: blue;
+  padding: 15px;
+  margin: 10px;
+  width: 300px;
+}
+.piezo {
+  display: flex;
+  flex-direction: column;
+  // background-color: red;
+  padding: 15px;
+  margin: 10px;
+  width: 300px;
 }
 .data {
-  font-weight: 10;
-  // background-color: azure;
-  font-size: 90px;
-  line-height: 120px;
-}
-.data-label-wrapper-s {
-  margin: 30px;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  // background-color: red;
-}
-.data-label-wrapper-s-item {
-  text-align: center;
+  font-size: 70px;
 }
 
-.data-label-s {
-  margin: 150px 20px;
-  font-size: 15px;
-  text-transform: uppercase;
-  word-spacing: 0px;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: normal;
-  font-weight: 600;
+#dateTimeToolbar {
+  background-color: rgb(51, 51, 51);
 }
-.data-unit-s {
-  font-size: 15px;
-  text-transform: lowercase;
-  color: rgb(145, 147, 168);
-  font-weight: 300;
-  letter-spacing: normal;
-  text-transform: none;
-  font-family: Arial, Helvetica, sans-serif;
+#dateTimeTitle {
+  color: #ffffff;
+  font-size: 20px;
 }
-.data-s {
-  font-size: 40px;
-  font-weight: 10;
+mat-card-title {
+  text-transform: capitalize;
+}
+mat-card-content {
+  font-size: 30px;
 }

@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from aqms.models import Aqms
-from aqms.serializers import PowerSerializer, WindspeedSerializer, AqmsSerializer, AqmsLatestSerializer, ColevelSerializer, PowerAveSerializer, PowerHourlySerializer, PowerDailySerializer, PowerWeeklySerializer, WindHourlySerializer, WindDailySerializer, WindWeeklySerializer, CoHourlySerializer, CoDailySerializer, CoWeeklySerializer
+from aqms.serializers import AqmsListSerializer, PowerSerializer, WindspeedSerializer, AqmsSerializer, AqmsLatestSerializer, ColevelSerializer, PowerAveSerializer, PowerHourlySerializer, PowerDailySerializer, PowerWeeklySerializer, WindHourlySerializer, WindDailySerializer, WindWeeklySerializer, CoHourlySerializer, CoDailySerializer, CoWeeklySerializer
 #  Create your views here.
 
 
@@ -17,15 +17,25 @@ class DateFilter(filters.FilterSet):
     year = filters.CharFilter(field_name='year', lookup_expr='iexact')
     week = filters.CharFilter(field_name='week', lookup_expr='iexact')
     month = filters.CharFilter(field_name='month', lookup_expr='iexact')
+    date = filters.CharFilter(field_name='date', lookup_expr='iexact')
+    hour = filters.CharFilter(field_name='hour', lookup_expr='iexact')
 
     class Meta:
         # models = Aqms
-        fields = ['date', 'week', 'month']
+        fields = ['day', 'year', 'week', 'month', 'date']
 
 
 class AqmsListCreateView(generics.ListCreateAPIView):
     queryset = Aqms.objects.all()
     serializer_class = AqmsSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = DateFilter
+
+
+class AqmsListView(generics.ListAPIView):
+    queryset = Aqms.objects.all().annotate(
+        date=TruncDate('date_time'), hour=ExtractHour('date_time'), time=TruncTime('date_time')).order_by('-id')
+    serializer_class = AqmsListSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter
 
@@ -57,7 +67,10 @@ class PowerHourlyAveListView(generics.ListAPIView):
     # queryset = Aqms.nonzero_objects.values(hour=ExtractHour(
     #     'date_time'), day=ExtractDay('date_time'), month=ExtractMonth('date_time'), year=ExtractYear('date_time')).annotate(ave_wat_pz=Avg('wat_pz'), ave_wat_wt=Avg('wat_wt'), ave_wat_all=Avg(F('wat_wt')+F('wat_pz'))).order_by('hour')
     queryset = Aqms.nonzero_objects.values(hour=ExtractHour('date_time'), day=ExtractDay('date_time'), month=ExtractMonth(
-        'date_time'), year=ExtractYear('date_time')).annotate(t_wat_pz=Avg('wat_pz'), t_wat_wt=Avg('wat_wt'), t_wat_all=Avg(F('wat_pz')+F('wat_wt'))).order_by('hour')
+        'date_time'), year=ExtractYear('date_time')).annotate(ave_vol_wt=Avg('vol_wt'), ave_amp_wt=Avg('amp_wt'), ave_vol_pz=Avg('vol_pz'), ave_amp_pz=Avg('amp_pz'), t_wat_pz=Avg('wat_pz'), t_wat_wt=Avg('wat_wt'), t_wat_all=Avg(F('wat_pz')+F('wat_wt'))).order_by('hour')
+
+    # queryset = Aqms.nonzero_objects.values(hour=ExtractHour('date_time'), date=TruncDate('date_time')).annotate(
+    #     t_wat_pz=Avg('wat_pz'), t_wat_wt=Avg('wat_wt'), t_wat_all=Avg(F('wat_pz')+F('wat_wt'))).order_by('hour')
     serializer_class = PowerHourlySerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = DateFilter

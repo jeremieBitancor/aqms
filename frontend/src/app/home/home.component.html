@@ -1,4 +1,4 @@
-<div class="cont">
+<!-- <div class="cont">
   <div class="data-label-wrapper">
     <span class="data-label">co level</span>
     <span class="data-unit">ppm</span>
@@ -65,4 +65,93 @@
       }}</span>
     </div>
   </div>
-</div>
+</div> -->
+<!-- <div class="cont">
+  <div class="item">
+    <span
+      >CO level: {{ (aqms$ | async)?.ppm | number: "1.0000-0" }}
+      <span class="label">ppm</span></span
+    >
+  </div>
+  <div class="item">
+    <span
+      >windspeed: {{ (aqms$ | async)?.windspeed }}
+      <span class="label">m/s</span></span
+    >
+  </div>
+  <div class="item">
+    <span>wind turbine: {{ (aqms$ | async)?.wat_wt }}</span>
+    <span class="label"> w</span> {{ (aqms$ | async)?.vol_wt }}
+    <span class="label">v</span> {{ (aqms$ | async)?.amp_wt }}
+    <span class="label">i</span>
+  </div>
+  <div class="item">
+    <span
+      >piezo: {{ (aqms$ | async)?.wat_pz }} <span class="label">w </span
+      >{{ (aqms$ | async)?.vol_pz }} <span class="label">v </span
+      >{{ (aqms$ | async)?.amp_pz }} <span class="label">i</span></span
+    >
+  </div>
+  <div class="item">
+    <span>{{ (aqms$ | async)?.date }} </span>
+    <span>{{ (aqms$ | async)?.time }}</span>
+  </div>
+</div> -->
+<mat-card class="latestDataContainer">
+  <mat-toolbar id="dateTimeToolbar">
+    <mat-card-title id="dateTimeTitle"
+      >{{ (aqms$ | async)?.date }} {{ (aqms$ | async)?.time }}</mat-card-title
+    >
+  </mat-toolbar>
+  <div id="dataContainer">
+    <mat-card class="colevel">
+      <mat-card-header>
+        <mat-card-title>CO level</mat-card-title>
+        <mat-card-subtitle>ppm</mat-card-subtitle>
+      </mat-card-header>
+      <span class="data">{{ (aqms$ | async)?.ppm }}</span>
+    </mat-card>
+    <mat-card class="windspeed">
+      <mat-card-header>
+        <mat-card-title>windspeed</mat-card-title>
+        <mat-card-subtitle>ms</mat-card-subtitle>
+      </mat-card-header>
+      <span class="data">{{ (aqms$ | async)?.windspeed }}</span>
+    </mat-card>
+    <mat-card class="windturbine">
+      <mat-card-header>
+        <mat-card-title>turbine</mat-card-title>
+      </mat-card-header>
+      <mat-card-content
+        >{{ (aqms$ | async)?.wat_wt }}
+        <mat-card-subtitle>wattage</mat-card-subtitle>
+      </mat-card-content>
+      <mat-card-content
+        >{{ (aqms$ | async)?.vol_wt }}
+        <mat-card-subtitle>voltage</mat-card-subtitle></mat-card-content
+      >
+      <mat-card-content
+        >{{ (aqms$ | async)?.amp_wt }}
+        <mat-card-subtitle>ampere</mat-card-subtitle></mat-card-content
+      >
+    </mat-card>
+    <mat-card class="piezo">
+      <mat-card-header>
+        <mat-card-title>piezo</mat-card-title>
+      </mat-card-header>
+      <mat-card-content
+        >{{ (aqms$ | async)?.wat_pz }}
+        <mat-card-subtitle>wattage</mat-card-subtitle>
+      </mat-card-content>
+      <mat-card-content
+        >{{ (aqms$ | async)?.vol_pz }}
+        <mat-card-subtitle>voltage</mat-card-subtitle></mat-card-content
+      >
+      <mat-card-content
+        >{{ (aqms$ | async)?.amp_pz }}
+        <mat-card-subtitle>ampere</mat-card-subtitle></mat-card-content
+      >
+    </mat-card>
+  </div>
+</mat-card>
+<app-data-table></app-data-table>

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAqms() {
-    this.aqms$ = Observable.interval(1000)
+    this.aqms$ = Observable.interval(8000)
       .startWith(0)
       .switchMap(() => this._aqmsService.getAqms());
   }

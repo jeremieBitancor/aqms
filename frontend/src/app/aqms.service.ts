@@ -10,6 +10,7 @@ export class AqmsService {
   // day = formatDate(new Date(), "dd", "en").replace(/^0+/, "");
   // year = formatDate(new Date(), "yyyy", "en").replace(/^0+/, "");
 
+  private _aqmsListURL = "http://128.199.248.62/api/aqms/all?";
   private _coURL = "http://128.199.248.62/api/aqms/colevel/";
   private _windURL = "http://128.199.248.62/api/aqms/windspeed/";
   private _powerURL = "http://128.199.248.62/api/aqms/power/";
@@ -46,6 +47,11 @@ export class AqmsService {
   //   this.getWindspeedWeekly();
   //   this.getPowerWeekly();
   // }
+
+  getAqmsList(date, hour): Observable<any> {
+    let url = this._aqmsListURL + "date=" + date + "&hour=" + hour;
+    return this.http.get<any>(url);
+  }
 
   getAqms() {
     return this.http.get(this._aqmsURL);

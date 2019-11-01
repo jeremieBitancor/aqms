@@ -1,8 +1,9 @@
 from django.urls import path
-from aqms.views import AqmsListCreateView, PowerListView, WindspeedListView, AqmsLatestView, ColevelListView, PowerAveListView, PowerHourlyAveListView, PowerDailyAveListView, PowerWeeklyAveListView, WindHourlyAveListView, WindDailyAveListView, WindWeeklyAveListView, CoHourlyAveListView, CoDailyAveListView, CoWeeklyAveListView
+from aqms.views import AqmsListCreateView, AqmsListView, PowerListView, WindspeedListView, AqmsLatestView, ColevelListView, PowerAveListView, PowerHourlyAveListView, PowerDailyAveListView, PowerWeeklyAveListView, WindHourlyAveListView, WindDailyAveListView, WindWeeklyAveListView, CoHourlyAveListView, CoDailyAveListView, CoWeeklyAveListView
 
 urlpatterns = [
     path('aqms/', AqmsListCreateView.as_view(), name='aqms'),
+    path('aqms/all', AqmsListView.as_view(), name='aqms'),
     path('aqms/power/', PowerListView.as_view(), name='power'),
     path('aqms/windspeed/', WindspeedListView.as_view(), name='windspeed'),
     path('aqms/colevel/', ColevelListView.as_view(), name='colevel'),

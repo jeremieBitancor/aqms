@@ -39,6 +39,17 @@ class AqmsLatestSerializer(serializers.ModelSerializer):
                   'wat_pz', 'vol_pz', 'amp_pz', 'wat_wt', 'vol_wt', 'amp_wt', 'date', 'time')
 
 
+class AqmsListSerializer(serializers.ModelSerializer):
+    date = serializers.DateField()
+    hour = serializers.IntegerField()
+    time = serializers.TimeField(format="%X")
+
+    class Meta:
+        model = Aqms
+        fields = ('ppm', 'windspeed',
+                  'wat_pz', 'vol_pz', 'amp_pz', 'wat_wt', 'vol_wt', 'amp_wt', 'date', 'hour', 'time')
+
+
 class PowerAveSerializer(serializers.ModelSerializer):
     ave_wat_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
     ave_wat_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
@@ -57,6 +68,10 @@ class PowerHourlySerializer(serializers.ModelSerializer):
     t_wat_pz = serializers.DecimalField(max_digits=8, decimal_places=3)
     t_wat_wt = serializers.DecimalField(max_digits=8, decimal_places=3)
     t_wat_all = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_vol_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_amp_wt = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_vol_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
+    ave_amp_pz = serializers.DecimalField(max_digits=6, decimal_places=3)
     hour = serializers.IntegerField()
     day = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -64,8 +79,8 @@ class PowerHourlySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aqms
-        fields = ('date_time', 'hour', 't_wat_all', 't_wat_wt',
-                  't_wat_pz', 'day', 'month', 'year')
+        fields = ('date_time', 'hour', 't_wat_all', 't_wat_wt', 'ave_vol_wt', 'ave_amp_wt',
+                  't_wat_pz', 'ave_vol_pz', 'ave_amp_pz', 'day', 'month', 'year')
 
 
 class PowerDailySerializer(serializers.ModelSerializer):

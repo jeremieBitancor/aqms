@@ -73,7 +73,7 @@ export class PowerChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < t_wat_wt.length; x++) {
-        consumedPower.push("1.500");
+        consumedPower.push("2.425");
       }
 
       this.pwChartD = new Chart("pwCanvasD", {
@@ -186,7 +186,7 @@ export class PowerChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < t_wat_wt.length; x++) {
-        consumedPower.push("36");
+        consumedPower.push("58.2");
       }
 
       this.pwChartW = new Chart("pwCanvasW", {
@@ -279,7 +279,7 @@ export class PowerChartComponent implements OnInit {
       let consumedPower = new Array();
 
       for (var x = 0; x < t_wat_wt.length; x++) {
-        consumedPower.push("252");
+        consumedPower.push("407.4");
       }
 
       this.pwChartM = new Chart("pwCanvasM", {
